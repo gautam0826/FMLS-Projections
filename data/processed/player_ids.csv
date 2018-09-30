@@ -1,0 +1,862 @@
+2018 player id,2018 player name,2018 position id,2018 team id,2017 player id,2017 player name,2017 position id,new player id
+110118.0,Matt Lampson,1.0,6977.0,2.0,Matt Lampson,1.0,110118.0
+133042.0,Jonathan Campbell,2.0,1207.0,3.0,Jonathan Campbell,2.0,133042.0
+86898.0,Johan Kappelhof,2.0,1207.0,6.0,Johan Kappelhof,2.0,86898.0
+172474.0,Brandon Vincent,2.0,1207.0,8.0,Brandon Vincent,2.0,172474.0
+41625.0,Arturo Alvarez,3.0,1897.0,9.0,Arturo Alvarez,3.0,41625.0
+220580.0,Drew Conner,3.0,1207.0,10.0,Drew Conner,3.0,220580.0
+41626.0,Dax McCarty,3.0,1207.0,14.0,Dax McCarty,3.0,41626.0
+197428.0,Matt Polster,2.0,1207.0,15.0,Matt Polster,3.0,197428.0
+246874.0,Djordje Mihailovic,3.0,1207.0,16.0,Djordje Mihailovic,3.0,246874.0
+126174.0,David Accam,3.0,5513.0,17.0,David Accam,4.0,126174.0
+66238.0,Michael de Leeuw,4.0,1207.0,20.0,Michael de Leeuw,4.0,66238.0
+82064.0,Nemanja Nikolic,4.0,1207.0,21.0,Nemanja Nikolic,4.0,82064.0
+152151.0,Luis Solignac,3.0,1207.0,22.0,Luis Solignac,4.0,152151.0
+245013.0,Daniel Johnson,3.0,1207.0,23.0,Daniel Johnson,3.0,245013.0
+245017.0,Stefan Cleveland,1.0,1207.0,24.0,Stefan Cleveland,1.0,245017.0
+15337.0,Tim Howard,1.0,436.0,26.0,Tim Howard,1.0,15337.0
+95276.0,Zac MacMath,1.0,436.0,27.0,Zac MacMath,1.0,95276.0
+41492.0,Marc Burch,2.0,6977.0,28.0,Marc Burch,2.0,41492.0
+234251.0,Kortne Ford,2.0,436.0,31.0,Kortne Ford,2.0,234251.0
+164480.0,Eric Miller,2.0,436.0,32.0,Eric Miller,2.0,164480.0
+202407.0,Axel Sjoberg,2.0,436.0,33.0,Axel Sjoberg,2.0,202407.0
+131833.0,Jared Watts,2.0,436.0,34.0,Jared Watts,2.0,131833.0
+163042.0,Micheal Azira,3.0,436.0,36.0,Michael Azira,3.0,163042.0
+60235.0,Sam Cronin,3.0,6977.0,37.0,Sam Cronin,3.0,60235.0
+177954.0,Marlon Hairston,2.0,436.0,38.0,Marlon Hairston,3.0,177954.0
+245617.0,Ricardo Perez,3.0,436.0,39.0,Ricardo Perez,3.0,245617.0
+78015.0,Dillon Powers,3.0,6900.0,40.0,Dillon Powers,3.0,78015.0
+151954.0,Dillon Serna,3.0,436.0,41.0,Dillon Serna,3.0,151954.0
+116185.0,Bismark Adjei-Boateng,3.0,436.0,42.0,Bismark Adjei-Boateng,3.0,116185.0
+202376.0,Dominique Badji,4.0,436.0,43.0,Dominique Badji,4.0,202376.0
+166317.0,Caleb Calvert,4.0,436.0,44.0,Caleb Calvert,4.0,166317.0
+41921.0,Shkelzen Gashi,3.0,436.0,45.0,Shkelzen Gashi,4.0,41921.0
+41667.0,Alan Gordon,4.0,1207.0,46.0,Alan Gordon,4.0,41667.0
+164484.0,Zack Steffen,1.0,454.0,48.0,Zack Steffen,1.0,164484.0
+151939.0,Brad Stuver,1.0,9668.0,49.0,Brad Stuver,1.0,151939.0
+244927.0,Lalas Abubakar,2.0,454.0,50.0,Lalas Abubakar,2.0,244927.0
+49483.0,Harrison Afful,2.0,454.0,51.0,Harrison Afful,2.0,49483.0
+234406.0,Alex Crognale,2.0,454.0,52.0,Alex Crognale,2.0,234406.0
+121332.0,Waylon Francis,2.0,3500.0,53.0,Waylon Francis,2.0,121332.0
+66905.0,Jonathan Mensah,2.0,454.0,54.0,Jonathan Mensah,2.0,66905.0
+62535.0,Jukka Raitala,2.0,1616.0,56.0,Jukka Raitala,2.0,62535.0
+60716.0,Gaston Sauro,2.0,454.0,57.0,Gaston Sauro,2.0,60716.0
+94479.0,Josh Williams,2.0,454.0,58.0,Josh Williams,2.0,94479.0
+95545.0,Mohammed Abu,3.0,454.0,59.0,Mohammed Abu,3.0,95545.0
+110583.0,Ethan Finlay,3.0,6977.0,61.0,Ethan Finlay,3.0,110583.0
+244998.0,Niko Hansen,3.0,454.0,62.0,Niko Hansen,3.0,244998.0
+47681.0,Federico Higuain,3.0,454.0,63.0,Federico Higuain,3.0,47681.0
+94934.0,Hector Jimenez,2.0,454.0,65.0,Hector Jimenez,3.0,94934.0
+226637.0,Cristian Martinez,3.0,454.0,66.0,Cristian Martinez,3.0,226637.0
+94368.0,Justin Meram,3.0,6900.0,67.0,Justin Meram,3.0,94368.0
+82516.0,Tony Tchani,3.0,1207.0,70.0,Tony Tchani,3.0,82516.0
+148995.0,Wil Trapp,3.0,454.0,71.0,Will Trapp,3.0,148995.0
+152253.0,Adam Jahn,4.0,454.0,73.0,Adam Jahn,4.0,152253.0
+55758.0,Ola Kamara,4.0,1230.0,74.0,Ola Kamara,4.0,55758.0
+205343.0,Travis Worra,1.0,1326.0,78.0,Travis Worra,1.0,205343.0
+129430.0,Steve Birnbaum,2.0,1326.0,79.0,Steve Birnbaum,2.0,129430.0
+50122.0,Sean Franklin,2.0,1708.0,81.0,Sean Franklin,2.0,50122.0
+116656.0,Taylor Kemp,2.0,1326.0,82.0,Taylor Kemp,2.0,116656.0
+234432.0,Chris Odoi-Atsem,2.0,1326.0,83.0,Chris Odoi-Atsem,2.0,234432.0
+151935.0,Kofi Opare,2.0,1326.0,84.0,Kofi Opare,2.0,151935.0
+131839.0,Jalen Robinson,2.0,1326.0,85.0,Jalen Robinson,2.0,131839.0
+179384.0,Luciano Acosta,3.0,1326.0,86.0,Luciano Acosta,3.0,179384.0
+110580.0,Nick DeLeon,2.0,1326.0,88.0,Nick DeLeon,3.0,110580.0
+211988.0,Chris Durkin,3.0,1326.0,89.0,Christopher Durkin,3.0,211988.0
+226308.0,Ian Harkes,3.0,1326.0,90.0,Ian Harkes,3.0,226308.0
+54916.0,Jared Jeffrey,3.0,1326.0,91.0,Jared Jeffrey,3.0,54916.0
+68571.0,Lamar Neagle,3.0,3500.0,92.0,Lamar Neagle,3.0,68571.0
+116661.0,Patrick Mullins,4.0,1326.0,100.0,Patrick Mullins,4.0,116661.0
+157489.0,Jesse Gonzalez,1.0,1903.0,102.0,Jesse Gonzalez,1.0,157489.0
+41679.0,Chris Seitz,1.0,1897.0,103.0,Chris Seitz,1.0,41679.0
+245035.0,Reggie Cannon,2.0,1903.0,104.0,Reggie Cannon,2.0,245035.0
+34285.0,Maynor Figueroa,2.0,1903.0,106.0,Maynor Figueroa,2.0,34285.0
+110592.0,Matt Hedges,2.0,1903.0,109.0,Matt Hedges,2.0,110592.0
+151933.0,Walker Zimmerman,2.0,11690.0,110.0,Walker Zimmerman,2.0,151933.0
+149528.0,Kellyn Acosta,3.0,1903.0,111.0,Kellyn Acosta,3.0,149528.0
+177653.0,Michael Barrios,3.0,1903.0,112.0,Michael Barrios,3.0,177653.0
+56949.0,Mauro Diaz,3.0,1903.0,114.0,Mauro Diaz,3.0,56949.0
+147744.0,Carlos Gruezo,3.0,1903.0,115.0,Carlos Gruezo,3.0,147744.0
+226309.0,Jacori Hayes,3.0,1903.0,116.0,Jacori Hayes,3.0,226309.0
+130056.0,Ryan Hollingshead,2.0,1903.0,117.0,Ryan Hollingshead,3.0,130056.0
+18681.0,Roland Lamah,3.0,1903.0,118.0,Roland Lamah,3.0,18681.0
+224377.0,Paxton Pomykal,3.0,1903.0,120.0,Paxton Pomykal,3.0,224377.0
+95280.0,Victor Ulloa,3.0,1903.0,121.0,Victor Ulloa,3.0,95280.0
+177947.0,Tesho Akindele,4.0,1903.0,122.0,Tesho Akindele,4.0,177947.0
+224372.0,Jesus Ferreira,4.0,1903.0,123.0,Jesus Ferreira,4.0,224372.0
+223353.0,Bryan Reynolds,4.0,1903.0,124.0,Bryan Reynolds,4.0,223353.0
+97607.0,Maximiliano Urruti,4.0,1903.0,125.0,Maximiliano Urruti,4.0,97607.0
+197011.0,Cristian Colman,4.0,1903.0,126.0,Cristian Colman,4.0,197011.0
+245504.0,Adonijah Reid,4.0,1903.0,127.0,Adonijah Reid,4.0,245504.0
+212003.0,Calle Brown,1.0,3500.0,128.0,Calle Brown,1.0,212003.0
+95309.0,Joe Willis,1.0,1897.0,130.0,Joe Willis,1.0,95309.0
+95228.0,Jalil Anibaba,2.0,928.0,132.0,Jalil Anibaba,2.0,95228.0
+60214.0,A.J. DeLaGarza,2.0,1897.0,133.0,AJ DeLaGarza,2.0,60214.0
+82519.0,Jose Leonardo Ribeiro da Silva,2.0,1897.0,134.0,Jose Leonardo Ribeiro da Silva,2.0,82519.0
+99108.0,Adolfo Machado,2.0,1897.0,135.0,Adolfo Machado,2.0,99108.0
+151950.0,Dylan Remick,2.0,1897.0,136.0,Dylan Remick,2.0,151950.0
+82518.0,Eric Alexander,3.0,1897.0,138.0,Eric Alexander,3.0,82518.0
+149669.0,Juan David Cabezas,3.0,1897.0,139.0,Juan David Cabezas,3.0,149669.0
+55209.0,Boniek Garcia,3.0,1897.0,140.0,Boniek Garcia,3.0,55209.0
+33823.0,Ricardo Clark,3.0,454.0,141.0,Ricardo Clark,3.0,33823.0
+110633.0,Andrew Wenger,3.0,1897.0,144.0,Andrew Wenger,3.0,110633.0
+173145.0,Alberth Elis,4.0,1897.0,145.0,Alberth Elis,4.0,173145.0
+177658.0,Mauro Manotas,4.0,1897.0,146.0,Mauro Manotas,4.0,177658.0
+119575.0,Romell Quioto,4.0,1897.0,147.0,Romell Quioto,4.0,119575.0
+109275.0,Evan Bush,1.0,1616.0,150.0,Evan Bush,1.0,109275.0
+179846.0,Victor Cabrera,2.0,1616.0,153.0,Victor Cabrera,2.0,179846.0
+42584.0,Laurent Ciman,2.0,11690.0,155.0,Laurent Ciman,2.0,42584.0
+131840.0,Chris Duvall,2.0,1616.0,156.0,Chris Duvall,2.0,131840.0
+131824.0,Kyle Fisher,2.0,1616.0,157.0,Kyle Fisher,2.0,131824.0
+197038.0,Louis Beland-Goyette,3.0,1616.0,160.0,Louis Beland-Goyette,3.0,197038.0
+227780.0,David Choiniere,3.0,1616.0,163.0,David Choiniere,3.0,227780.0
+8859.0,Marco Donadel,3.0,1616.0,164.0,Marco Donadel,3.0,8859.0
+110606.0,Calum Mallace,3.0,11690.0,165.0,Calum Mallace,3.0,110606.0
+37996.0,Ignacio Piatti,3.0,1616.0,166.0,Ignacio Piatti,3.0,37996.0
+225062.0,Shamit Shome,3.0,1616.0,168.0,Shamit Shome,3.0,225062.0
+172518.0,Nick DePuy,4.0,1616.0,170.0,Nick DePuy,4.0,172518.0
+184610.0,Anthony Jackson-Hamel,4.0,1616.0,171.0,Anthony Jackson-Hamel,4.0,184610.0
+153016.0,Matteo Mancosu,4.0,1616.0,172.0,Matteo Mancosu,4.0,153016.0
+41633.0,Dominic Oduro,4.0,1616.0,173.0,Dominic Oduro,4.0,41633.0
+165096.0,Michael Salazar,3.0,1616.0,174.0,Michael Salazar,4.0,165096.0
+102626.0,Clement Diop,1.0,1616.0,175.0,Clement Diop,1.0,102626.0
+110620.0,Brian Rowe,1.0,1708.0,177.0,Brian Rowe,1.0,110620.0
+176416.0,Hugo Arellano,2.0,1230.0,178.0,Hugo Arellano,2.0,176416.0
+3785.0,Ashley Cole,2.0,1230.0,179.0,Ashley Cole,2.0,3785.0
+213213.0,Dave Romney,2.0,1230.0,181.0,Dave Romney,2.0,213213.0
+111473.0,Daniel Steres,2.0,1230.0,182.0,Daniel Steres,2.0,111473.0
+60132.0,Baggio Husidic,3.0,1230.0,185.0,Baggio Husidic,3.0,60132.0
+159716.0,Joao Pedro Almeida Machado,3.0,1230.0,186.0,Joao Pedro Almeida Machado,3.0,159716.0
+88534.0,Sebastian Lletget,3.0,1230.0,188.0,Sebastian Lletget,3.0,88534.0
+112264.0,Jose Villarreal,3.0,6900.0,189.0,Jose Villarreal,3.0,112264.0
+168365.0,Emmanuel Boateng,3.0,1230.0,190.0,Emmanuel Boateng,4.0,168365.0
+40275.0,Giovani dos Santos,4.0,1230.0,191.0,Giovani dos Santos,4.0,40275.0
+177978.0,Bradford Jamieson IV,4.0,1230.0,192.0,Bradford Jamieson IV,4.0,177978.0
+210476.0,Ariel Lassiter,4.0,1230.0,193.0,Ariel Lassiter,4.0,210476.0
+95287.0,Jack McBean,4.0,436.0,194.0,Jack McBean,4.0,95287.0
+149359.0,Gyasi Zardes,4.0,454.0,196.0,Gyasi Zardes,4.0,149359.0
+86140.0,Romain Alessandrini,3.0,1230.0,197.0,Romain Alessandrini,3.0,86140.0
+101135.0,Cody Cropper,1.0,928.0,198.0,Cody Cropper,1.0,101135.0
+41556.0,Brad Knighton,1.0,928.0,199.0,Brad Knighton,1.0,41556.0
+77521.0,Bobby Shuttleworth,1.0,6977.0,200.0,Bobby Shuttleworth,1.0,77521.0
+224068.0,Matt Turner,1.0,928.0,201.0,Matt Turner,1.0,224068.0
+151940.0,Andrew Farrell,2.0,928.0,202.0,Andrew Farrell,2.0,151940.0
+51133.0,Chris Tierney,2.0,928.0,204.0,Chris Tierney,2.0,51133.0
+67704.0,Antonio Delamea,2.0,928.0,208.0,Antonio Mlinar Delamea,2.0,67704.0
+82524.0,Teal Bunbury,3.0,928.0,209.0,Teal Bunbury,3.0,82524.0
+151955.0,Scott Caldwell,3.0,928.0,210.0,Scott Caldwell,3.0,151955.0
+95284.0,Diego Fagundez,3.0,928.0,211.0,Diego Fagundez,3.0,95284.0
+209256.0,Zachary Herivaux,3.0,928.0,212.0,Zachary Herivaux,3.0,209256.0
+28580.0,Lee Nguyen,3.0,928.0,215.0,Lee Nguyen,3.0,28580.0
+110619.0,Kelyn Rowe,3.0,928.0,216.0,Kelyn Rowe,3.0,110619.0
+83905.0,Juan Agudelo,4.0,928.0,217.0,Juan Agudelo,4.0,83905.0
+41493.0,Kei Kamara,4.0,1708.0,218.0,Kei Kamara,4.0,41493.0
+180233.0,Brian Wright,4.0,928.0,219.0,Brian Wright,4.0,180233.0
+78013.0,Sean Johnson,1.0,9668.0,221.0,Sean Johnson,1.0,78013.0
+224029.0,Andre Rawls,1.0,9668.0,222.0,Andre Rawls,1.0,224029.0
+110557.0,RJ Allen,2.0,6900.0,223.0,RJ Allen,2.0,110557.0
+121000.0,Frederic Brillant,2.0,1326.0,224.0,Frederic Brillant,2.0,121000.0
+57876.0,Maxime Chanot,2.0,9668.0,225.0,Maxime Chanot,2.0,57876.0
+180593.0,Ronald Matarrita,2.0,9668.0,227.0,Ronald Matarrita,2.0,180593.0
+159710.0,Alexander Callens,2.0,9668.0,229.0,Alexander Callens,2.0,159710.0
+177930.0,Thomas McNamara,3.0,9668.0,234.0,Thomas McNamara,3.0,177930.0
+213295.0,Jonathan Lewis,4.0,9668.0,236.0,Jonathan Lewis,4.0,213295.0
+200192.0,Khiry Shelton,4.0,421.0,238.0,Khiry Shelton,4.0,200192.0
+17279.0,David Villa,4.0,9668.0,239.0,David Villa,4.0,17279.0
+88909.0,Alexander Ring,3.0,9668.0,240.0,Alexander Ring,3.0,88909.0
+110609.0,Ryan Meara,1.0,399.0,241.0,Ryan Meara,1.0,110609.0
+41210.0,Luis Robles,1.0,399.0,242.0,Luis Robles,1.0,41210.0
+234377.0,Evan Louro,1.0,399.0,244.0,Evan Louro,1.0,234377.0
+200785.0,Tyler Adams,3.0,399.0,245.0,Tyler Adams,3.0,200785.0
+45959.0,Aurelien Collin,2.0,399.0,248.0,Aurelien Collin,2.0,45959.0
+109699.0,Connor Lade,2.0,399.0,249.0,Connor Lade,2.0,109699.0
+170827.0,Kemar Lawrence,2.0,399.0,250.0,Kemar Lawrence,2.0,170827.0
+45122.0,Sal Zizzo,2.0,11091.0,251.0,Sal Zizzo,2.0,45122.0
+131372.0,Sean Davis,3.0,399.0,253.0,Sean Davis,3.0,131372.0
+220752.0,Derrick Etienne Jr.,3.0,399.0,254.0,Derrick Etienne,3.0,220752.0
+56812.0,Felipe Martins,3.0,1708.0,255.0,Felipe Martins,3.0,56812.0
+59848.0,Mike Grella,3.0,454.0,256.0,Mike Grella,3.0,59848.0
+41703.0,Sacha Kljestan,3.0,6900.0,257.0,Sacha Kljestan,3.0,41703.0
+220753.0,Alex Muyl,3.0,399.0,260.0,Alex Muyl,3.0,220753.0
+84752.0,Daniel Royer,3.0,399.0,261.0,Daniel Royer,3.0,84752.0
+18770.0,Bradley Wright-Phillips,4.0,399.0,265.0,Bradley Wright-Phillips,4.0,18770.0
+247041.0,Hassan Ndam,2.0,399.0,266.0,Hassan Ndam,2.0,247041.0
+95611.0,Joe Bendik,1.0,6900.0,267.0,Joe Bendik,1.0,95611.0
+130049.0,Earl Edwards Jr.,1.0,6900.0,268.0,Earl Edwards Jr.,1.0,130049.0
+219510.0,Mason Stajduhar,1.0,6900.0,269.0,Mason Stajduhar,1.0,219510.0
+201031.0,Jose Aja,2.0,1708.0,271.0,Jose Aja,2.0,201031.0
+170843.0,Victor Giro,2.0,6900.0,277.0,Victor Giro,2.0,170843.0
+181180.0,Rafael Ramos,2.0,1207.0,278.0,Rafael Ramos,2.0,181180.0
+181013.0,Tommy Redding,2.0,399.0,279.0,Tommy Redding,2.0,181013.0
+96201.0,Donny Toia,2.0,6900.0,280.0,Donny Toia,2.0,96201.0
+18005.0,Jonathan Spector,2.0,6900.0,281.0,Jonathan Spector,2.0,18005.0
+95259.0,Servando Carrasco,3.0,1230.0,282.0,Servando Carrasco,3.0,95259.0
+176403.0,Pierre Da Silva,4.0,6900.0,283.0,Pierre Da Silva,3.0,176403.0
+149674.0,Cristian Higuita,3.0,6900.0,284.0,Cristian Higuita,3.0,149674.0
+39276.0,Will Johnson,3.0,6900.0,285.0,Will Johnson,3.0,39276.0
+221403.0,Richmond Laryea,3.0,6900.0,287.0,Richmond Laryea,3.0,221403.0
+175337.0,Carlos Rivas,3.0,399.0,290.0,Carlos Rivas,3.0,175337.0
+212020.0,Tony Rocha,3.0,6900.0,291.0,Tony Rocha,3.0,212020.0
+50067.0,Brek Shea,2.0,1708.0,292.0,Brek Shea,3.0,50067.0
+185126.0,Cyle Larin,4.0,6900.0,294.0,Cyle Larin,4.0,185126.0
+163906.0,Andre Blake,1.0,5513.0,296.0,Andre Blake,1.0,163906.0
+163565.0,John McCarthy,1.0,5513.0,297.0,John McCarthy,1.0,163565.0
+132000.0,Fabio Alves,2.0,5513.0,298.0,Fabio Alves,2.0,132000.0
+110974.0,Raymon Gaddis,2.0,5513.0,299.0,Raymon Gaddis,2.0,110974.0
+178000.0,Richie Marquez,2.0,5513.0,300.0,Richie Marquez,2.0,178000.0
+127541.0,Keegan Rosenberry,2.0,5513.0,301.0,Keegan Rosenberry,2.0,127541.0
+201410.0,Auston Trusty,2.0,5513.0,303.0,Auston Trusty,2.0,201410.0
+202192.0,Joshua Yaro,2.0,5513.0,305.0,Joshua Yaro,2.0,202192.0
+203480.0,Eric Ayuk,3.0,5513.0,307.0,Eric Ayuk,3.0,203480.0
+61770.0,Alejandro Bedoya,3.0,5513.0,308.0,Alejandro Bedoya,3.0,61770.0
+110575.0,Warren Creavalle,3.0,5513.0,310.0,Warren Creavalle,3.0,110575.0
+230802.0,Derrick Jones,3.0,5513.0,311.0,Derrick Jones,3.0,230802.0
+45120.0,Ilson Pereira,3.0,5513.0,313.0,Ilson Pereira Dias Junior,3.0,45120.0
+60152.0,Chris Pontius,3.0,1230.0,314.0,Chris Pontius,3.0,60152.0
+221475.0,Fabian Herbers,3.0,5513.0,316.0,Fabian Herbers,4.0,221475.0
+95321.0,C.J. Sapong,4.0,5513.0,317.0,CJ Sapong,4.0,95321.0
+39976.0,Jay Simpson,4.0,5513.0,318.0,Jay Simpson,4.0,39976.0
+94305.0,Jeff Attinella,1.0,1581.0,320.0,Jeff Attinella,1.0,94305.0
+95297.0,Jake Gleeson,1.0,1581.0,321.0,Jake Gleeson,1.0,95297.0
+164479.0,Kendall McIntosh,1.0,1581.0,322.0,Kendall McIntosh,1.0,164479.0
+113367.0,Gbenga Arokoyo,2.0,11091.0,323.0,Gbenga Arokoyo,2.0,113367.0
+241724.0,Rennico Clarke,2.0,1581.0,324.0,Rennico Clarke,2.0,241724.0
+242130.0,Marco Farfan,2.0,1581.0,325.0,Marco Farfan,2.0,242130.0
+34361.0,Roy Miller,2.0,1581.0,326.0,Roy Miller,2.0,34361.0
+50102.0,Chance Myers,2.0,1581.0,327.0,Chance Myers,2.0,50102.0
+153264.0,Alvas Powell,2.0,1581.0,329.0,Alvas Powell,2.0,153264.0
+14278.0,Liam Ridgewell,2.0,1581.0,330.0,Liam Ridgewell,2.0,14278.0
+95236.0,Zarek Valentin,2.0,1581.0,331.0,Zarek Valentin,2.0,95236.0
+54862.0,Vytautas Andriuskevicius,2.0,1581.0,332.0,Vytautas Andriuskevicius,2.0,54862.0
+205623.0,Victor Arboleda,3.0,1581.0,333.0,Victor Arboleda,3.0,205623.0
+149675.0,Dairon Asprilla,3.0,1581.0,334.0,Dairon Asprilla,3.0,149675.0
+112134.0,Jack Barmby,3.0,1581.0,335.0,Jack Barmby,3.0,112134.0
+96622.0,Diego Chara,3.0,1581.0,336.0,Diego Chara,3.0,96622.0
+95261.0,Darlington Nagbe,3.0,11091.0,337.0,Darlington Nagbe,3.0,95261.0
+55817.0,Diego Valeri,3.0,1581.0,338.0,Diego Valeri,3.0,55817.0
+77756.0,David Guzman,3.0,1581.0,340.0,David Guzman,3.0,77756.0
+95186.0,Fanendo Adi,4.0,1581.0,341.0,Fanendo Adi,4.0,95186.0
+235290.0,Jeremy Ebobisse,4.0,1581.0,342.0,Jeremy Ebobisse,4.0,235290.0
+110608.0,Darren Mattocks,4.0,1326.0,343.0,Darren Mattocks,4.0,110608.0
+15310.0,Nick Rimando,1.0,1899.0,347.0,Nick Rimando,1.0,15310.0
+50136.0,Tony Beltran,2.0,1899.0,349.0,Tony Beltran,2.0,50136.0
+183390.0,Justen Glad,2.0,1899.0,350.0,Justen Glad,2.0,183390.0
+78019.0,Aaron Maund,2.0,1708.0,351.0,Aaron Maund,2.0,78019.0
+47627.0,Demar Phillips,2.0,1899.0,352.0,Demar Phillips,2.0,47627.0
+83378.0,Chris Schuler,2.0,6900.0,353.0,Chris Schuler,2.0,83378.0
+50143.0,David Horst,2.0,1899.0,355.0,David Horst,2.0,50143.0
+220877.0,Danilo Acosta,2.0,1899.0,356.0,Danilo Acosta,3.0,220877.0
+177980.0,Jordan Allen,3.0,1899.0,357.0,Jordan Allen,3.0,177980.0
+15517.0,Kyle Beckerman,3.0,1899.0,358.0,Kyle Beckerman,3.0,15517.0
+173423.0,Jose Hernandez,2.0,11091.0,359.0,Jose Hernandez,3.0,173423.0
+243978.0,Jose Hernandez,3.0,1899.0,359.0,Jose Hernandez,3.0,243978.0
+153453.0,Luke Mulholland,3.0,1899.0,361.0,Luke Mulholland,3.0,153453.0
+84481.0,Albert Rusnak,3.0,1899.0,362.0,Albert Rusnak,3.0,84481.0
+43684.0,Sunday Stephen,3.0,1899.0,363.0,Sunday Stephen,3.0,43684.0
+110624.0,Luis Silva,4.0,1899.0,364.0,Luis Silva,3.0,110624.0
+41535.0,Yura Movsisyan,4.0,1899.0,365.0,Yura Movsisyan,4.0,41535.0
+95278.0,Joao Plata,3.0,1899.0,366.0,Joao Plata,4.0,95278.0
+194187.0,Sebastian Saucedo,3.0,1899.0,367.0,Sebastian Saucedo,4.0,194187.0
+94932.0,David Bingham,1.0,1230.0,370.0,David Bingham,1.0,94932.0
+221400.0,Andrew Tarbell,1.0,1131.0,371.0,Andrew Tarbell,1.0,221400.0
+221755.0,Kip Colvey,2.0,436.0,373.0,Kip Colvey,2.0,221755.0
+174109.0,Nick Lima,2.0,1131.0,376.0,Nick Lima,2.0,174109.0
+99103.0,Harold Cummings,2.0,1131.0,379.0,Harold Cummings,2.0,99103.0
+163482.0,Fatai Alashe,3.0,1131.0,380.0,Fatai Alashe,3.0,163482.0
+117549.0,Darwin Ceren,3.0,1897.0,382.0,Darwin Ceren,3.0,117549.0
+48759.0,Simon Dawkins,3.0,1131.0,383.0,Simon Dawkins,3.0,48759.0
+99117.0,Anibal Godoy,3.0,1131.0,384.0,Anibal Godoy,3.0,99117.0
+50081.0,Shea Salinas,2.0,1131.0,386.0,Shea Salinas,3.0,50081.0
+178211.0,Tommy Thompson,3.0,1131.0,388.0,Tommy Thompson,3.0,178211.0
+245628.0,Jackson Yueill,3.0,1131.0,389.0,Jackson Yueill,3.0,245628.0
+60225.0,Quincy Amarikwa,4.0,1131.0,390.0,Quincy Amarikwa,4.0,60225.0
+41647.0,Chris Wondolowski,4.0,1131.0,391.0,Chris Wondolowski,4.0,41647.0
+77755.0,Marcos Urena,4.0,11690.0,392.0,Marcos Urena,4.0,77755.0
+60238.0,Stefan Frei,1.0,3500.0,393.0,Stefan Frei,1.0,60238.0
+107672.0,Bryan Meredith,1.0,3500.0,394.0,Bryan Meredith,1.0,107672.0
+202361.0,Tyler Miller,1.0,11690.0,395.0,Tyler Miller,1.0,202361.0
+221252.0,Tony Alfaro,2.0,3500.0,396.0,Tony Alfaro,2.0,221252.0
+41487.0,Brad Evans,2.0,421.0,397.0,Brad Evans,2.0,41487.0
+202378.0,Oniel Fisher,2.0,1326.0,398.0,Oniel Fisher,2.0,202378.0
+33808.0,Chad Marshall,2.0,3500.0,400.0,Chad Marshall,2.0,33808.0
+34160.0,Roman Torres,2.0,3500.0,401.0,Roman Torres,2.0,34160.0
+244410.0,Nouhou Tolo,2.0,3500.0,402.0,Nouhou Tolo,2.0,244410.0
+60244.0,Osvaldo Alonso,3.0,3500.0,403.0,Osvaldo Alonso,3.0,60244.0
+172482.0,Aaron Kovar,3.0,11690.0,405.0,Aaron Kovar,3.0,172482.0
+77992.0,Nicolas Lodeiro,3.0,3500.0,406.0,Nicolas Lodeiro,3.0,77992.0
+172762.0,Cristian Roldan,3.0,3500.0,407.0,Cristian Roldan,3.0,172762.0
+177976.0,Harry Shipp,3.0,3500.0,408.0,Harry Shipp,3.0,177976.0
+198532.0,Henry Wingo,3.0,3500.0,409.0,Henry Wingo,3.0,198532.0
+198920.0,Seyi Adekoya,4.0,3500.0,410.0,Seyi Adekoya,4.0,198920.0
+95272.0,Will Bruin,4.0,3500.0,411.0,Will Bruin,4.0,95272.0
+20226.0,Clint Dempsey,4.0,3500.0,412.0,Clint Dempsey,4.0,20226.0
+172483.0,Jordan Morris,4.0,3500.0,414.0,Jordan Morris,4.0,172483.0
+51774.0,Gustav Svensson,3.0,3500.0,415.0,Gustav Svensson,3.0,51774.0
+61090.0,Andrew Dykstra,1.0,436.0,416.0,Andrew Dykstra,1.0,61090.0
+86938.0,Tim Melia,1.0,421.0,417.0,Tim Melia,1.0,86938.0
+213875.0,Adrian Zendejas,1.0,421.0,418.0,Adrian Zendejas,1.0,213875.0
+202402.0,Saad Abdul-Salaam,2.0,9668.0,419.0,Saad Abdul-Salaam,2.0,202402.0
+60207.0,Matt Besler,2.0,421.0,420.0,Matt Besler,2.0,60207.0
+95320.0,Kevin Ellis,2.0,1207.0,421.0,Kevin Ellis,2.0,95320.0
+169013.0,Jimmy Medranda,3.0,421.0,423.0,Jimmy Medranda,2.0,169013.0
+78023.0,Ike Opara,2.0,421.0,424.0,Ike Opara,2.0,78023.0
+82526.0,Seth Sinovic,2.0,421.0,427.0,Seth Sinovic,2.0,82526.0
+50105.0,Roger Espinoza,3.0,421.0,428.0,Roger Espinoza,3.0,50105.0
+20525.0,Benny Feilhaber,3.0,11690.0,429.0,Benny Feilhaber,3.0,20525.0
+109320.0,Gerso Fernandes,4.0,421.0,430.0,Gerso Fernandes,3.0,109320.0
+106519.0,Lawrence Olum,3.0,1581.0,433.0,Lawrence Olum,3.0,106519.0
+86155.0,Ilie Sanchez,3.0,421.0,434.0,Ilie Sanchez,3.0,86155.0
+60210.0,Graham Zusi,2.0,421.0,435.0,Graham Zusi,3.0,60210.0
+245764.0,Latif Blessing,4.0,11690.0,436.0,Latif Blessing,4.0,245764.0
+60318.0,Dom Dwyer,4.0,6900.0,437.0,Dom Dwyer,4.0,60318.0
+102208.0,Diego Rubio,4.0,421.0,440.0,Diego Rubio,4.0,102208.0
+213866.0,Daniel Salloi,3.0,421.0,441.0,Daniel Salloi,4.0,213866.0
+101172.0,Soony Saad,4.0,421.0,443.0,Soony Saad,4.0,101172.0
+163484.0,Alex Bono,1.0,2077.0,444.0,Alex Bono,1.0,163484.0
+118738.0,Clint Irwin,1.0,2077.0,445.0,Clint Irwin,1.0,118738.0
+82845.0,Steven Beitashour,2.0,11690.0,447.0,Steven Beitashour,2.0,82845.0
+132113.0,Nick Hagglund,2.0,2077.0,448.0,Nick Hagglund,2.0,132113.0
+41627.0,Drew Moor,2.0,2077.0,449.0,Drew Moor,2.0,41627.0
+95630.0,Ashtone Morgan,2.0,2077.0,450.0,Ashtone Morgan,2.0,95630.0
+83065.0,Justin Morrow,2.0,2077.0,451.0,Justin Morrow,2.0,83065.0
+151949.0,Eriq Zavaleta,2.0,2077.0,452.0,Eriq Zavaleta,2.0,151949.0
+37368.0,Michael Bradley,3.0,2077.0,453.0,Michael  Bradley,3.0,37368.0
+112998.0,Jay Chapman,3.0,2077.0,455.0,Jay Chapman,3.0,112998.0
+114579.0,Marky Delgado,3.0,2077.0,457.0,Marky Delgado,3.0,114579.0
+153647.0,Jonathan Osorio,3.0,2077.0,459.0,Jonathon Osorio,3.0,153647.0
+41574.0,Jozy Altidore,4.0,2077.0,460.0,Jozy Altidore,4.0,41574.0
+40283.0,Sebastian Giovinco,4.0,2077.0,462.0,Sebastian Giovinco,4.0,40283.0
+113002.0,Jordan Hamilton,4.0,2077.0,463.0,Jordan Hamilton,4.0,113002.0
+62839.0,Tosaint Ricketts,4.0,2077.0,464.0,Tosaint Ricketts,4.0,62839.0
+68259.0,Chris Mavinga,2.0,2077.0,465.0,Chris Mavinga,2.0,68259.0
+52629.0,David Ousted,1.0,1326.0,466.0,David Ousted,1.0,52629.0
+172761.0,Spencer Richey,1.0,1708.0,467.0,Spencer Richey,1.0,172761.0
+225059.0,Alphonso Davies,3.0,1708.0,469.0,Alphonso Davies,2.0,225059.0
+39226.0,Marcel de Jong,2.0,1708.0,470.0,Marcel de Jong,2.0,39226.0
+129440.0,Christian Dean,2.0,1207.0,471.0,Christian Dean,2.0,129440.0
+41599.0,Jordan Harvey,2.0,11690.0,473.0,Jordan Harvey,2.0,41599.0
+231573.0,Brett Levis,2.0,1708.0,474.0,Brett Levis,2.0,231573.0
+202356.0,Tim Parker,2.0,399.0,475.0,Tim Parker,2.0,202356.0
+193906.0,Kendall Waston,2.0,1708.0,478.0,Kendall Waston,2.0,193906.0
+205404.0,Deybi Flores,3.0,1708.0,481.0,Deybi Flores,3.0,205404.0
+151953.0,Erik Hurtado,4.0,1708.0,482.0,Erik Hurtado,3.0,151953.0
+87984.0,Nicolas Mezquida,3.0,1708.0,486.0,Nicolas Mezquida,3.0,87984.0
+152577.0,Cristian Techera,3.0,1708.0,487.0,Cristian Techera,3.0,152577.0
+92437.0,Russell Teibert,3.0,1708.0,488.0,Russell Teibert,3.0,92437.0
+156787.0,Yordy Reyna,3.0,1708.0,489.0,Yordy Reyna,3.0,156787.0
+156919.0,Alec Kann,1.0,11091.0,493.0,Alec Kann,1.0,156919.0
+135297.0,Mikey Ambrose,2.0,11091.0,495.0,Mikey Ambrose,2.0,135297.0
+110209.0,Greg Garza,2.0,11091.0,497.0,Greg Garza,2.0,110209.0
+41552.0,Michael Parkhurst,2.0,11091.0,499.0,Michael Parkhurst,2.0,41552.0
+241500.0,Miles Robinson,2.0,11091.0,500.0,Miles Robinson,2.0,241500.0
+95780.0,Leandro Gonzalez Pirez,2.0,11091.0,501.0,Leandro Gonzalez Pirez,2.0,95780.0
+12780.0,Tyrone Mears,2.0,6977.0,502.0,Tyrone Mears,2.0,12780.0
+179018.0,Miguel Almiron,3.0,11091.0,503.0,Miguel Almiron,3.0,179018.0
+159561.0,Yamil Asad,3.0,1326.0,504.0,Yamil Asad,3.0,159561.0
+220142.0,Andrew Carleton,3.0,11091.0,505.0,Andrew Carleton,3.0,220142.0
+220147.0,Chris Goslin,3.0,11091.0,506.0,Chris Goslin,3.0,220147.0
+244997.0,Julian Gressel,3.0,11091.0,507.0,Julian Gressel,3.0,244997.0
+160529.0,Harrison Heath,3.0,6977.0,508.0,Harrison Heath,3.0,160529.0
+66857.0,Kevin Kratz,3.0,11091.0,509.0,Kevin Kratz,3.0,66857.0
+41551.0,Jeff Larentowicz,3.0,11091.0,510.0,Jeff Larentowicz,3.0,41551.0
+20491.0,Chris McCann,3.0,11091.0,511.0,Chris McCann,3.0,20491.0
+41605.0,Jacob Peterson,4.0,11091.0,512.0,Jacob Peterson,3.0,41605.0
+218313.0,Brandon Vazquez,4.0,11091.0,515.0,Brandon Vazquez,4.0,218313.0
+122828.0,Hector Villalba,4.0,11091.0,516.0,Hector Villalba,4.0,122828.0
+186262.0,Romario Williams,4.0,11091.0,517.0,Romario Williams,4.0,186262.0
+113757.0,Patrick McLain,1.0,1207.0,519.0,Patrick McLain,1.0,113757.0
+99122.0,Francisco Calvo,2.0,6977.0,521.0,Francisco Calvo,2.0,99122.0
+49876.0,Vadim Demidov,2.0,6977.0,523.0,Vadim Demidov,2.0,49876.0
+186250.0,Brent Kallman,2.0,6977.0,525.0,Brent Kallman,2.0,186250.0
+110596.0,Miguel Ibarra,3.0,6977.0,528.0,Miguel Ibarra,3.0,110596.0
+19825.0,Ibson Barreto da Silva,3.0,6977.0,529.0,Ibson Barreto da Silva,3.0,19825.0
+131841.0,Collin Martin,3.0,6977.0,530.0,Collin Martin,3.0,131841.0
+63954.0,Rasmus Schuller,3.0,6977.0,534.0,Rasmus Schuller,3.0,63954.0
+77952.0,Kevin Molino,3.0,6977.0,535.0,Kevin Molino,3.0,77952.0
+83072.0,Collen Warner,3.0,6977.0,536.0,Collen Warner,3.0,83072.0
+202195.0,Abu Danladi,4.0,6977.0,537.0,Abu Danladi,4.0,202195.0
+220450.0,Femi Hollinger-Janzen,4.0,928.0,538.0,Femi Hollinger-Janzen,4.0,220450.0
+163397.0,Christian Ramirez,4.0,6977.0,539.0,Christian Ramirez,4.0,163397.0
+55820.0,Sebastian Blanco,3.0,1581.0,541.0,Sebastian Blanco,3.0,55820.0
+111686.0,Josef Martinez,4.0,11091.0,542.0,Josef Martinez,4.0,111686.0
+54980.0,Danny Hoesen,3.0,1131.0,543.0,Danny Hoesen,4.0,54980.0
+51937.0,Florian Jungwirth,3.0,1131.0,544.0,Florian Jungwirth,2.0,51937.0
+28188.0,Haris Medunjanin,3.0,5513.0,545.0,Haris Medunjanin,3.0,28188.0
+196762.0,Fafa Picault,3.0,5513.0,546.0,Fabrice-Jean Picault,4.0,196762.0
+41393.0,Jahmir Hyka,3.0,1131.0,547.0,Jahmir Hyka,3.0,41393.0
+178386.0,Brooks Lennon,3.0,1899.0,549.0,Brooks Lennon,4.0,178386.0
+245020.0,Marcus Epps,3.0,5513.0,550.0,Marcus Epps,3.0,245020.0
+247432.0,Adam Najem,3.0,5513.0,554.0,Adam Najem,3.0,247432.0
+225851.0,Andrew Wheeler-Omiunu,3.0,11091.0,555.0,Andrew Wheeler-Omiunu,3.0,225851.0
+12875.0,DaMarcus Beasley,2.0,1897.0,556.0,DaMarcus Beasley,2.0,12875.0
+245005.0,Jake Nerwinski,2.0,1708.0,557.0,Jakob Nerwinski,2.0,245005.0
+227232.0,Artur de Lima Junior,3.0,454.0,558.0,Jose de Lima Junior,3.0,227232.0
+55831.0,Maximiliano Moralez,3.0,9668.0,559.0,Maximiliano Moralez,3.0,55831.0
+60153.0,Rodney Wallace,3.0,9668.0,562.0,Rodney Wallace,3.0,60153.0
+246808.0,Logan Ketterer,1.0,454.0,563.0,Logan Ketterer,1.0,246808.0
+234725.0,Connor Maloney,2.0,454.0,564.0,Connor Maloney,2.0,234725.0
+60032.0,Jerome Thiesson,2.0,6977.0,566.0,Jerome Thiesson,2.0,60032.0
+226541.0,Yangel Herrera,3.0,9668.0,567.0,Yangel Herrera,3.0,226541.0
+244929.0,Kwame Awuah,3.0,9668.0,569.0,Kwame Awuah,2.0,244929.0
+204401.0,Michael Murillo,2.0,399.0,570.0,Michael Amir Murillo,2.0,204401.0
+49841.0,Victor Vazquez,3.0,2077.0,571.0,Victor Vazquez,3.0,49841.0
+163529.0,Ben Sweat,2.0,9668.0,573.0,Ben Sweat,2.0,163529.0
+163541.0,Aaron Long,2.0,399.0,574.0,Aaron Long,2.0,163541.0
+244988.0,Brandt Bronico,3.0,1207.0,576.0,Brandt Bronico,3.0,244988.0
+245012.0,Jack Elliott,2.0,5513.0,578.0,Jack Elliott,2.0,245012.0
+245008.0,Colton Storm,2.0,421.0,579.0,Colton Storm,2.0,245008.0
+178297.0,George Malki,2.0,1897.0,585.0,George Malki,3.0,178297.0
+177928.0,Daniel Lovitz,2.0,1616.0,587.0,Daniel Lovitz,2.0,177928.0
+111536.0,Kevin Garcia,2.0,1897.0,590.0,Kevin Garcia,2.0,111536.0
+27678.0,Scott Sutter,2.0,6900.0,592.0,Scott Sutter,2.0,27678.0
+165072.0,Jordy Delem,3.0,3500.0,595.0,Jordy Delem,3.0,165072.0
+131376.0,Zach Mathers,3.0,3500.0,596.0,Zach Mathers,3.0,131376.0
+228605.0,Raheem Edwards,3.0,1616.0,597.0,Raheem Edwards,4.0,228605.0
+90644.0,Jon Kempin,1.0,454.0,599.0,Jon Kempin,1.0,90644.0
+186535.0,Jake McGuire,1.0,5513.0,604.0,Jake McGuire,1.0,186535.0
+138020.0,Mike da Fonte,2.0,436.0,606.0,Mike da Fonte,2.0,138020.0
+173614.0,Matt Bersano,1.0,1131.0,607.0,Matt Bersano,1.0,173614.0
+15208.0,Bastian Schweinsteiger,3.0,1207.0,608.0,Bastian Schweinsteiger,3.0,15208.0
+234266.0,Sam Hamilton,3.0,436.0,612.0,Sam Hamilton,3.0,234266.0
+196666.0,Jefferson Savarino,4.0,1899.0,617.0,Jefferson Savarino,4.0,196666.0
+102921.0,Bernie Ibini,3.0,1708.0,618.0,Bernie Ibini-Isei,4.0,102921.0
+170148.0,Ben Spencer,4.0,2077.0,619.0,Ben Spencer,4.0,170148.0
+233807.0,Amer Didic,2.0,421.0,623.0,Amer Didic,2.0,233807.0
+41705.0,Brad Guzan,1.0,11091.0,625.0,Brad Guzan,1.0,41705.0
+153399.0,Tomas Martinez,3.0,1897.0,626.0,Tomas Martinez,3.0,153399.0
+154528.0,Charlie Ward,3.0,1897.0,627.0,Charlie Ward,3.0,154528.0
+95330.0,Michael Boxall,2.0,6977.0,629.0,Michael Boxall,2.0,95330.0
+132134.0,Sam Nicholson,3.0,6977.0,630.0,Sam Nicholson,3.0,132134.0
+215471.0,James Sands,3.0,9668.0,631.0,James Sands,2.0,215471.0
+41004.0,Larrys Mabiala,2.0,1581.0,632.0,Larrys Mabiala Destin,2.0,41004.0
+77994.0,Marcelo Silva,2.0,1899.0,633.0,Marcelo Andres Silva Fernandez,2.0,77994.0
+88940.0,Valeri Qazaishvili,3.0,1131.0,634.0,Valeri Kazaishvili,3.0,88940.0
+58634.0,Kelvin Leerdam,2.0,3500.0,635.0,Kelvin Leerdam,2.0,58634.0
+90764.0,Cristian Lobato,3.0,421.0,636.0,Cristian Lobato,3.0,90764.0
+88147.0,Nicolas Hasler,2.0,2077.0,637.0,Nicolas Hasler,2.0,88147.0
+72775.0,Stefan Marinovic,1.0,1708.0,638.0,Stefan Marinovic,1.0,72775.0
+204399.0,Fidel Escobar,2.0,399.0,639.0,Fidel Escobar,2.0,204399.0
+76688.0,Jonathan dos Santos,3.0,1230.0,640.0,Jonathan dos Santos,3.0,76688.0
+45269.0,Claude Dielna,2.0,928.0,642.0,Claude Dielna,2.0,45269.0
+61993.0,Muhamed Keita,3.0,399.0,643.0,Muhamed Keita,3.0,61993.0
+175077.0,Bill Tuiloma,3.0,1581.0,644.0,Bill Poni Tuiloma,3.0,175077.0
+27058.0,Francois Affolter,2.0,1131.0,645.0,Francois Affolter,2.0,27058.0
+38099.0,Stefan Aigner,3.0,436.0,646.0,Stefan Aigner,3.0,38099.0
+92202.0,Pedro Santos,3.0,454.0,647.0,Pedro Miguel Martins Santos,3.0,92202.0
+209819.0,Russell Canouse,3.0,1326.0,648.0,Russell Canouse,3.0,209819.0
+225007.0,Bruno Miranda,4.0,1326.0,649.0,Bruno Miranda,4.0,225007.0
+20962.0,Zoltan Stieber,3.0,1326.0,650.0,Zoltan Stieber,4.0,20962.0
+16854.0,Philippe Senderos,2.0,1897.0,652.0,Philippe Senderos,2.0,16854.0
+246809.0,Alex Kapp,1.0,6977.0,653.0,Alex Kapp,1.0,246809.0
+182906.0,Samuel Piette,3.0,1616.0,654.0,Samuel Piette,3.0,182906.0
+98898.0,Yoshi Yotun,3.0,6900.0,655.0,Victor Yoshimar Yotun,2.0,98898.0
+91373.0,Victor Rodriguez,3.0,3500.0,656.0,Victor Rodriguez,3.0,91373.0
+166921.0,Paul Arriola,3.0,1326.0,657.0,Paul Arriola,3.0,166921.0
+242216.0,Vincent Bezecourt,3.0,399.0,658.0,Vincent Bezecourt,3.0,242216.0
+119491.0,James Musa,3.0,421.0,659.0,James Musa,3.0,119491.0
+42512.0,Krisztian Nemeth,3.0,928.0,660.0,Krisztian Nemeth,4.0,42512.0
+150711.0,Aly Ghazal,3.0,1708.0,661.0,Aly Ghazal,3.0,150711.0
+111806.0,Steve Clark,1.0,1326.0,662.0,Steve Clark,1.0,111806.0
+95298.0,Richard Sanchez,1.0,1207.0,663.0,Richard Sanchez,1.0,95298.0
+231772.0,Jose Leiton,3.0,6977.0,664.0,Jose Leiton,3.0,231772.0
+37740.0,Michael Ciani,2.0,1230.0,666.0,Michael Ciani,2.0,37740.0
+117330.0,Jorge Corrales,2.0,1207.0,668.0,Jorge Corrales,2.0,117330.0
+133584.0,Kharlton Belmar,4.0,421.0,669.0,Kharlton Belmar,4.0,133584.0
+13356.0,Rod Fanni,2.0,1616.0,,,,13356.0
+18529.0,Reto Ziegler,2.0,1903.0,,,,18529.0
+22820.0,Milton Valenzuela,2.0,454.0,,,,22820.0
+33900.0,Cristian Casseres Jr.,3.0,399.0,,,,33900.0
+38401.0,Carlos Vela,4.0,11690.0,,,,38401.0
+40497.0,Yannick Boli,4.0,436.0,,,,40497.0
+40798.0,Gregory van der Wiel,2.0,2077.0,,,,40798.0
+42453.0,Johnny Russell,3.0,421.0,,,,42453.0
+44871.0,Rolf Feltscher,2.0,1230.0,,,,44871.0
+45099.0,Tommy Smith,2.0,436.0,,,,45099.0
+49438.0,Jordon Mutch,3.0,1708.0,,,,49438.0
+50051.0,Caleb Patterson-Sewell,1.0,2077.0,,,,50051.0
+53477.0,Edgar Castillo,2.0,436.0,,,,53477.0
+53526.0,Efrain Juarez,3.0,1708.0,,,,53526.0
+59059.0,Alfredo Ortuno,4.0,1899.0,,,,59059.0
+60490.0,Danny Wilson,2.0,436.0,,,,60490.0
+60536.0,Dejan Jakovic,2.0,11690.0,,,,60536.0
+60906.0,Lamine Sane,2.0,6900.0,,,,60906.0
+61934.0,Jo Inge Berget,4.0,9668.0,,,,61934.0
+63800.0,Jorgen Skjelvik,2.0,1230.0,,,,63800.0
+66244.0,Samuel Armenteros,4.0,1581.0,,,,66244.0
+66284.0,Anton Tinnerholm,2.0,9668.0,,,,66284.0
+66553.0,Magnus Eriksson,3.0,1131.0,,,,66553.0
+68431.0,Damir Kreilach,3.0,1899.0,,,,68431.0
+69194.0,Borek Dockal,3.0,5513.0,,,,69194.0
+73442.0,Joe Mason,4.0,436.0,,,,73442.0
+78008.0,Magnus Eikrem,3.0,3500.0,,,,78008.0
+82752.0,Saphir Taider,3.0,1616.0,,,,82752.0
+83005.0,Aleksandar Katai,3.0,1207.0,,,,83005.0
+83055.0,Aleksandar Katai,3.0,1207.0,,,,83055.0
+83725.0,Felipe Gutierrez,3.0,421.0,,,,83725.0
+84760.0,Marc Rzatkowksi,3.0,399.0,,,,84760.0
+85682.0,Zakaria Diallo,2.0,1616.0,,,,85682.0
+88460.0,Alex Horwath,1.0,1899.0,,,,88460.0
+88812.0,Doneil Henry,2.0,1708.0,,,,88812.0
+95277.0,Perry Kitchen,3.0,1230.0,,,,95277.0
+95281.0,Brian Sylvestre,1.0,1230.0,,,,95281.0
+95778.0,Jimmy Maurer,1.0,1903.0,,,,95778.0
+97016.0,Shawn Barry,2.0,1899.0,,,,97016.0
+98925.0,Andres Flores,3.0,1581.0,,,,98925.0
+102456.0,Oriol Rosell,3.0,6900.0,,,,102456.0
+103903.0,Adam Henley,2.0,1899.0,,,,103903.0
+104369.0,Yohan Croizet,3.0,421.0,,,,104369.0
+105713.0,Wilfried Zahibo,3.0,928.0,,,,105713.0
+107978.0,Johan Blomberg,3.0,436.0,,,,107978.0
+110607.0,Enzo Martinez,3.0,436.0,,,,110607.0
+110954.0,Mohamed El-Munir,2.0,6900.0,,,,110954.0
+114041.0,Jack Price,3.0,436.0,,,,114041.0
+114101.0,Oliver Shannon,3.0,11091.0,,,,114101.0
+114236.0,Gabriel Somi,2.0,928.0,,,,114236.0
+116957.0,Mitch Hildebrandt,1.0,11091.0,,,,116957.0
+120022.0,Omar Gaber,2.0,11690.0,,,,120022.0
+120760.0,Alejandro Silva,3.0,1616.0,,,,120760.0
+120764.0,Kim Kee-Hee,2.0,3500.0,,,,120764.0
+123657.0,Anton Nedyalkov,2.0,1903.0,,,,123657.0
+126206.0,Eric Bird,3.0,1897.0,,,,126206.0
+129443.0,Stefano Bonomo,3.0,399.0,,,,129443.0
+131371.0,Sebastien Ibeagha,2.0,9668.0,,,,131371.0
+148707.0,Amando Moreno,4.0,399.0,,,,148707.0
+149231.0,Junior Moreno,3.0,1326.0,,,,149231.0
+152268.0,Kyle Zobeck,1.0,1903.0,,,,152268.0
+152278.0,Stefano Pinho,4.0,6900.0,,,,152278.0
+153082.0,Cristian Penilla,4.0,928.0,,,,153082.0
+153390.0,Ismael Tajouri,4.0,9668.0,,,,153390.0
+159537.0,Ager Aketxe,3.0,2077.0,,,,159537.0
+163044.0,Dane Kelly,4.0,1326.0,,,,163044.0
+163523.0,Jimmy Ockford,2.0,1131.0,,,,163523.0
+164489.0,Ebenezer Ofori,3.0,9668.0,,,,164489.0
+167227.0,Jesus Medina,3.0,9668.0,,,,167227.0
+167890.0,Michael Petrasso,2.0,1616.0,,,,167890.0
+168567.0,Cedric Hountondji,2.0,9668.0,,,,168567.0
+170782.0,Alejandro Romero Gamarra,3.0,399.0,,,,170782.0
+172758.0,Taylor Peay,2.0,1899.0,,,,172758.0
+172981.0,Auro Alvaro da Cruz Junior,2.0,2077.0,,,,172981.0
+179062.0,Eduardo Sosa,3.0,454.0,,,,179062.0
+179298.0,Andy Polo,3.0,1581.0,,,,179298.0
+181958.0,Julio Cascante,2.0,1581.0,,,,181958.0
+184468.0,Luis Lopez,1.0,11690.0,,,,184468.0
+186074.0,Emrah Klimenta,2.0,1230.0,,,,186074.0
+186679.0,Joel Qwiberg,2.0,1131.0,,,,186679.0
+193891.0,Franco Escobar,2.0,11091.0,,,,193891.0
+196287.0,Alejandro Fuenmayor,2.0,1897.0,,,,196287.0
+197421.0,Tomas Hilliard-Arce,2.0,1230.0,,,,197421.0
+197422.0,Corey Baird,4.0,1899.0,,,,197422.0
+198533.0,Justin Fiddes,2.0,1708.0,,,,198533.0
+198572.0,Foster Langsdorf,4.0,1581.0,,,,198572.0
+198884.0,Memo Rodriguez,3.0,1897.0,,,,198884.0
+200190.0,Graham Smith,2.0,421.0,,,,200190.0
+200735.0,Mo Adams,3.0,1207.0,,,,200735.0
+200786.0,Eric Calvillo,3.0,1131.0,,,,200786.0
+200844.0,Emiliano Amor,2.0,421.0,,,,200844.0
+201053.0,Jeisson Vargas,3.0,1616.0,,,,201053.0
+201397.0,Anthony Fontana,3.0,5513.0,,,,201397.0
+201401.0,Mark McKenzie,2.0,5513.0,,,,201401.0
+201405.0,Matthew Real,2.0,5513.0,,,,201405.0
+202198.0,Nick Besler,3.0,1899.0,,,,202198.0
+203996.0,Luiz Fernando,3.0,6977.0,,,,203996.0
+204261.0,Ben Mines,3.0,399.0,,,,204261.0
+204568.0,Anthony Blondell,4.0,1708.0,,,,204568.0
+204843.0,Modou Jadama,2.0,1581.0,,,,204843.0
+205285.0,Joseph Mora,2.0,1326.0,,,,205285.0
+205867.0,Charlie Lyon,1.0,11690.0,,,,205867.0
+209818.0,Jeff Caldwell,1.0,9668.0,,,,209818.0
+210151.0,Deklan Wynne,2.0,436.0,,,,210151.0
+210475.0,Ulises Segura,3.0,1326.0,,,,210475.0
+210841.0,Adam Grinwis,1.0,6900.0,,,,210841.0
+212993.0,Amro Tarek,2.0,6900.0,,,,212993.0
+215474.0,Ayo Akinola,4.0,2077.0,,,,215474.0
+217784.0,Cristhian Paredes,3.0,1581.0,,,,217784.0
+217788.0,Josue Colman,3.0,6900.0,,,,217788.0
+218539.0,Pablo Ruiz,3.0,1899.0,,,,218539.0
+219527.0,Luis Alberto Caicedo,3.0,928.0,,,,219527.0
+220205.0,Jaylin Lindsey,2.0,421.0,,,,220205.0
+220458.0,Jordan McCrary,2.0,3500.0,,,,220458.0
+220470.0,Connor Sparrow,1.0,1899.0,,,,220470.0
+222820.0,Milton Valenzuela,2.0,454.0,,,,222820.0
+223215.0,Luis Felipe,3.0,1131.0,,,,223215.0
+223234.0,Isaac Angking,3.0,928.0,,,,223234.0
+223256.0,Diego Rossi,4.0,11690.0,,,,223256.0
+224382.0,Brandon Servania,3.0,1903.0,,,,224382.0
+224430.0,Efrain Alvarez,3.0,1230.0,,,,224430.0
+224823.0,Sam Vines,2.0,436.0,,,,224823.0
+225030.0,Santiago Mosquera,3.0,1903.0,,,,225030.0
+225053.0,James Pantemis,1.0,1616.0,,,,225053.0
+225054.0,Thomas Meilleur-Giguere,2.0,1616.0,,,,225054.0
+225061.0,Liam Fraser,3.0,2077.0,,,,225061.0
+226311.0,Jon Bakero,4.0,1207.0,,,,226311.0
+226384.0,JT Marcinkowski,1.0,1131.0,,,,226384.0
+226898.0,Nicolas Samayoa,2.0,928.0,,,,226898.0
+226917.0,Gordon Wild,4.0,11091.0,,,,226917.0
+227123.0,Cory Burke,4.0,5513.0,,,,227123.0
+227731.0,Mark-Anthony Kaye,3.0,11690.0,,,,227731.0
+231969.0,Ezequiel Barco,3.0,11091.0,,,,231969.0
+232071.0,Yeferson Quintana,2.0,1131.0,,,,232071.0
+232262.0,James Murphy,3.0,11690.0,,,,232262.0
+232274.0,Eduard Atuesta,3.0,11690.0,,,,232274.0
+234193.0,Grant Lillard,2.0,1207.0,,,,234193.0
+234342.0,Mark Segbers,2.0,928.0,,,,234342.0
+234345.0,Chris Mueller,3.0,6900.0,,,,234345.0
+234384.0,Francis Atuahene,4.0,1903.0,,,,234384.0
+234420.0,Eryk Williamson,3.0,1581.0,,,,234420.0
+234585.0,Justin Vom Steeg,1.0,1230.0,,,,234585.0
+234618.0,Jon Gallagher,4.0,11091.0,,,,234618.0
+234764.0,Ken Krolicki,3.0,1616.0,,,,234764.0
+240899.0,Florian Valot,3.0,399.0,,,,240899.0
+243974.0,Handwalla Bwana,3.0,3500.0,,,,243974.0
+244120.0,Myer Bevan,4.0,1708.0,,,,244120.0
+244696.0,Kevin Politz,2.0,399.0,,,,244696.0
+244768.0,Cam Lindley,3.0,6900.0,,,,244768.0
+244781.0,Jordan Cano,2.0,1903.0,,,,244781.0
+244879.0,Kris Reaves,2.0,1903.0,,,,244879.0
+244899.0,Kyle Duncan,2.0,399.0,,,,244899.0
+245009.0,Chris Wehan,3.0,1131.0,,,,245009.0
+247683.0,David Norman Jr.,3.0,1708.0,,,,247683.0
+248022.0,Aaron Herrera,2.0,1899.0,,,,248022.0
+249164.0,Mason Toye,4.0,6977.0,,,,249164.0
+249242.0,Lagos Kunga,3.0,11091.0,,,,249242.0
+249537.0,Niki Jackson,4.0,436.0,,,,249537.0
+250290.0,Rodrigo Pacheco,4.0,11690.0,,,,250290.0
+422426.0,Monday Etim,4.0,11690.0,,,,422426.0
+422516.0,Patrick Okonkwo,4.0,11091.0,,,,422516.0
+422981.0,Luis Argudo,3.0,454.0,,,,422981.0
+423123.0,Tristan Blackmon,2.0,11690.0,,,,423123.0
+423237.0,Elliot Collier,4.0,1207.0,,,,423237.0
+423406.0,Eric Dick,1.0,421.0,,,,423406.0
+423551.0,Danny Musovski,4.0,1131.0,,,,423551.0
+423568.0,Alex Roldan,3.0,3500.0,,,,423568.0
+424995.0,Shaft Brewer Jr.,3.0,11690.0,,,,424995.0
+426106.0,Jacob Akanyirige,2.0,1131.0,,,,426106.0
+426120.0,Gilbert Fuentes,3.0,1131.0,,,,426120.0
+426771.0,George Bello,2.0,11091.0,,,,426771.0
+427168.0,Gianluca Busio,4.0,421.0,,,,427168.0
+427426.0,Joe Scally,2.0,9668.0,,,,427426.0
+434529.0,Frantz Pangop,3.0,6977.0,,,,434529.0
+442431.0,Brandon Bye,2.0,928.0,,,,442431.0
+442443.0,Matt Lewis,2.0,421.0,,,,442443.0
+442446.0,Ben Lundgaard,1.0,454.0,,,,442446.0
+442451.0,Wyatt Omsberg,2.0,6977.0,,,,442451.0
+442461.0,Carter Manley,2.0,6977.0,,,,442461.0
+442472.0,Mac Steeves,4.0,1897.0,,,,442472.0
+442476.0,Mohamed Thiaw,4.0,1131.0,,,,442476.0
+443002.0,Joao Moutinho,2.0,11690.0,,,,443002.0
+443009.0,Ema Twumasi,3.0,1903.0,,,,443009.0
+443433.0,Jason Beaulieu,1.0,1616.0,,,,443433.0
+443516.0,Luis Argudo,3.0,454.0,,,,443516.0
+443517.0,Diego Campos,3.0,1207.0,,,,443517.0
+443538.0,Edward Opoku,3.0,454.0,,,,443538.0
+444142.0,Zach Wright,4.0,421.0,,,,444142.0
+445788.0,Bertrand Owundi Eko'o,2.0,6977.0,,,,445788.0
+446090.0,Cristian Casseres Jr.,3.0,399.0,,,,446090.0
+,,,,1.0,Jorge Rodrigo Bava,1.0,1.0
+,,,,4.0,Patrick Doody,2.0,4.0
+,,,,5.0,Michael Harrington,2.0,5.0
+,,,,7.0,Joao Meira,2.0,7.0
+,,,,11.0,Collin Fernandez,3.0,11.0
+,,,,12.0,John Goossens,3.0,12.0
+,,,,13.0,Vitor Gomes Pereira Junior,3.0,13.0
+,,,,18.0,David Arshakyan,4.0,18.0
+,,,,19.0,Joey Calistri,4.0,19.0
+,,,,25.0,John Berner,1.0,25.0
+,,,,29.0,Bobby Burling,2.0,29.0
+,,,,30.0,Dennis Castillo,2.0,30.0
+,,,,35.0,Mekeil Williams,2.0,35.0
+,,,,47.0,Kevin Doyle,4.0,47.0
+,,,,55.0,Nicolai Naess,2.0,55.0
+,,,,60.0,Dilly Duka,3.0,60.0
+,,,,64.0,Marshall Hollingsworth,3.0,64.0
+,,,,68.0,Rodrigo Saravia,3.0,68.0
+,,,,69.0,Ben Swanson,3.0,69.0
+,,,,72.0,Abuchi Obinwa,3.0,72.0
+,,,,75.0,Bill Hamid,1.0,75.0
+,,,,76.0,Charlie Horton,1.0,76.0
+,,,,77.0,Eric Klenofsky,1.0,77.0
+,,,,80.0,Bobby Boswell,2.0,80.0
+,,,,87.0,Julian Buescher,3.0,87.0
+,,,,93.0,Patrick Nyarko,3.0,93.0
+,,,,94.0,Chris Rolfe,3.0,94.0
+,,,,95.0,Lloyd Sam,3.0,95.0
+,,,,96.0,Marcelo Sarvas,3.0,96.0
+,,,,97.0,Rob Vincent,3.0,97.0
+,,,,98.0,Sebastien Le Toux,3.0,98.0
+,,,,99.0,Alhaji Kamara,4.0,99.0
+,,,,101.0,Jose Guillermo Ortiz,4.0,101.0
+,,,,105.0,Anibal Chala,2.0,105.0
+,,,,107.0,Aaron Guillen,2.0,107.0
+,,,,108.0,Atiba Harris,2.0,108.0
+,,,,113.0,Coy Craft,3.0,113.0
+,,,,119.0,Javier Morales,3.0,119.0
+,,,,129.0,Tyler Deric,1.0,129.0
+,,,,131.0,Agustin Garcia,2.0,131.0
+,,,,137.0,Alexandre Monteiro De Lima,3.0,137.0
+,,,,142.0,Jose Escalante,3.0,142.0
+,,,,143.0,Christian Lucatero,3.0,143.0
+,,,,148.0,Erick Torres,4.0,148.0
+,,,,149.0,Vicente Sanchez,4.0,149.0
+,,,,151.0,Maxime Crepeau,1.0,151.0
+,,,,152.0,Eric Kronberg,1.0,152.0
+,,,,154.0,Hassoun Camara,2.0,154.0
+,,,,158.0,Wandrille Lefevre,2.0,158.0
+,,,,159.0,Ambroise Oyongo,2.0,159.0
+,,,,161.0,Hernan Bernardello,3.0,161.0
+,,,,162.0,Patrice Bernier,3.0,162.0
+,,,,167.0,Andres Romero,3.0,167.0
+,,,,169.0,Ballou Jean-Yves Tabla,3.0,169.0
+,,,,176.0,Dan Kennedy,1.0,176.0
+,,,,180.0,Robbie Rogers,2.0,180.0
+,,,,183.0,Jelle Van Damme,2.0,183.0
+,,,,184.0,Rafael Garcia,3.0,184.0
+,,,,187.0,Jermaine Jones,3.0,187.0
+,,,,195.0,Raul Mendiola,4.0,195.0
+,,,,203.0,Donald Smith,2.0,203.0
+,,,,205.0,Je-Vaughn Watson,2.0,205.0
+,,,,206.0,London Woodberry,2.0,206.0
+,,,,207.0,Benjamin Angoua,2.0,207.0
+,,,,213.0,Daigo Kobayashi,3.0,213.0
+,,,,214.0,Xavier Kouassi,3.0,214.0
+,,,,220.0,Eirik Johansen,1.0,220.0
+,,,,226.0,Shannon Gomez,2.0,226.0
+,,,,228.0,Ethan White,2.0,228.0
+,,,,230.0,Miguel Camargo,3.0,230.0
+,,,,231.0,Mix Diskerud,3.0,231.0
+,,,,232.0,Jack Harrison,3.0,232.0
+,,,,233.0,Mikey Lopez,3.0,233.0
+,,,,235.0,Andrea Pirlo,3.0,235.0
+,,,,237.0,Sean Okoli,4.0,237.0
+,,,,243.0,Rafael Diaz,1.0,243.0
+,,,,246.0,Gideon Baah,2.0,246.0
+,,,,247.0,Justin Bilyeu,2.0,247.0
+,,,,252.0,Damien Perrinelle,2.0,252.0
+,,,,258.0,Zeiko Lewis,3.0,258.0
+,,,,259.0,Dan Metzger,3.0,259.0
+,,,,262.0,Arun Basuljevic,3.0,262.0
+,,,,263.0,Brandon Allen,4.0,263.0
+,,,,264.0,Gonzalo Veron,4.0,264.0
+,,,,270.0,Josh Saunders,1.0,270.0
+,,,,272.0,Kevin Alston,2.0,272.0
+,,,,273.0,Conor Donovan,2.0,273.0
+,,,,274.0,Devron Garcia,2.0,274.0
+,,,,275.0,Seb Hines,2.0,275.0
+,,,,276.0,David Mateos,2.0,276.0
+,,,,286.0,Kaka,3.0,286.0
+,,,,288.0,Antonio Nocerino,3.0,288.0
+,,,,289.0,Matias Perez Garcia,3.0,289.0
+,,,,293.0,Hadji Barry,4.0,293.0
+,,,,295.0,Bryan Rochez,4.0,295.0
+,,,,302.0,Ken Tribbett,2.0,302.0
+,,,,304.0,Giliano Wijnaldum,2.0,304.0
+,,,,306.0,Roland Alberg,3.0,306.0
+,,,,309.0,Brian Carroll,3.0,309.0
+,,,,312.0,Maurice Edu,3.0,312.0
+,,,,315.0,Charlie Davies,4.0,315.0
+,,,,319.0,Oguchi Onyewu,2.0,319.0
+,,,,328.0,Amobi Okugo,2.0,328.0
+,,,,339.0,Ben Zemanski,3.0,339.0
+,,,,344.0,Jack McInerney,4.0,344.0
+,,,,345.0,Lucas Melano,4.0,345.0
+,,,,346.0,Lalo Fernandez,1.0,346.0
+,,,,348.0,Matt Van Oekel,1.0,348.0
+,,,,354.0,Chris Wingert,2.0,354.0
+,,,,360.0,Omar Holness,3.0,360.0
+,,,,368.0,Ricardo Velazco,4.0,368.0
+,,,,369.0,Chad Barrett,4.0,369.0
+,,,,372.0,Victor Bernardez,2.0,372.0
+,,,,374.0,Shaun Francis,2.0,374.0
+,,,,375.0,Andres Imperiale,2.0,375.0
+,,,,377.0,Marvell Wynne,2.0,377.0
+,,,,378.0,Kofi Sarkodie,2.0,378.0
+,,,,381.0,Cordell Cato,3.0,381.0
+,,,,385.0,Marc Pelosi,3.0,385.0
+,,,,387.0,Matheus Silva,3.0,387.0
+,,,,399.0,Joevin Jones,2.0,399.0
+,,,,404.0,Alvaro Fernandez,3.0,404.0
+,,,,413.0,Victor Mansaray,4.0,413.0
+,,,,422.0,Igor Juliao,2.0,422.0
+,,,,425.0,Erik Palmer-Brown,2.0,425.0
+,,,,426.0,Tyler Pasher,2.0,426.0
+,,,,431.0,Benji Joya,3.0,431.0
+,,,,432.0,Soni Mustivar,3.0,432.0
+,,,,438.0,Cameron Iwasa,4.0,438.0
+,,,,439.0,Cameron Porter,4.0,439.0
+,,,,442.0,Christian Volesky,4.0,442.0
+,,,,446.0,Brandon Aubrey,2.0,446.0
+,,,,454.0,Sergio Camargo,3.0,454.0
+,,,,456.0,Armando Cooper,3.0,456.0
+,,,,458.0,Tsubasa Endoh,3.0,458.0
+,,,,461.0,Mo Babouli,4.0,461.0
+,,,,468.0,Paolo Tornaghi,1.0,468.0
+,,,,472.0,David Edgar,2.0,472.0
+,,,,476.0,Sheanon Williams,2.0,476.0
+,,,,477.0,Cole Seiler,2.0,477.0
+,,,,479.0,Christian Bolanos,3.0,479.0
+,,,,480.0,Marco Bustos,3.0,480.0
+,,,,483.0,Andrew Jacobson,3.0,483.0
+,,,,484.0,Matias Laba,3.0,484.0
+,,,,485.0,Ben McKendry,3.0,485.0
+,,,,490.0,Giles Barnes,4.0,490.0
+,,,,491.0,Kyle Greig,4.0,491.0
+,,,,492.0,Kekuta Manneh,4.0,492.0
+,,,,494.0,Alexander Tambakis,1.0,494.0
+,,,,496.0,Mark Bloom,2.0,496.0
+,,,,498.0,Zach Loyd,2.0,498.0
+,,,,513.0,Kenwyne Jones,4.0,513.0
+,,,,514.0,Jeffrey Otoo,4.0,514.0
+,,,,518.0,Anton Walkes,2.0,518.0
+,,,,520.0,John Alvbage,1.0,520.0
+,,,,522.0,Justin Davis,2.0,522.0
+,,,,524.0,Joseph Greenspan,2.0,524.0
+,,,,526.0,Kevin Venegas,2.0,526.0
+,,,,527.0,Jermaine Taylor,2.0,527.0
+,,,,531.0,Mohammed Saied,3.0,531.0
+,,,,532.0,Johan Venegas,3.0,532.0
+,,,,533.0,Bernardo Anor,3.0,533.0
+,,,,540.0,Benoit Cheyrou,3.0,540.0
+,,,,548.0,Carlos Carmona,3.0,548.0
+,,,,551.0,Hernan Grana,2.0,551.0
+,,,,552.0,Carlos Cermeno,3.0,552.0
+,,,,553.0,Bashkim Kadrii,3.0,553.0
+,,,,560.0,Fredy Montero,4.0,560.0
+,,,,561.0,Joshua Gatt,3.0,561.0
+,,,,565.0,Walker Hume,2.0,565.0
+,,,,568.0,John Stertzer,3.0,568.0
+,,,,572.0,Adrian Arregui,3.0,572.0
+,,,,575.0,Matej Dekovic,2.0,575.0
+,,,,577.0,Aaron Jones,2.0,577.0
+,,,,580.0,Mauro Rosales,3.0,580.0
+,,,,581.0,Kyle Reynish,1.0,581.0
+,,,,582.0,Taylor Hunter,2.0,582.0
+,,,,583.0,Joseph Holland,3.0,583.0
+,,,,584.0,Jose Rodriguez,3.0,584.0
+,,,,586.0,Bradley Diallo,2.0,586.0
+,,,,588.0,Joshua Smith,2.0,588.0
+,,,,589.0,Maxim Tissot,2.0,589.0
+,,,,591.0,Nathan Smith,2.0,591.0
+,,,,593.0,Justin Schmidt,2.0,593.0
+,,,,594.0,Reagan Dunk,2.0,594.0
+,,,,598.0,Jaime Villarreal,3.0,598.0
+,,,,600.0,Ismaila Jome,3.0,600.0
+,,,,601.0,Danny Deakin,3.0,601.0
+,,,,602.0,Moussa Sane,4.0,602.0
+,,,,603.0,Fredrik Gulbrandsen,4.0,603.0
+,,,,605.0,Johan Brunell,2.0,605.0
+,,,,609.0,Oyvind Alseth,2.0,609.0
+,,,,610.0,Jason Hernandez,2.0,610.0
+,,,,611.0,Mark Pais,1.0,611.0
+,,,,613.0,Luis Gil,3.0,613.0
+,,,,614.0,Leonardo Pereira,2.0,614.0
+,,,,615.0,Chris Korb,2.0,615.0
+,,,,616.0,Blerim Dzemaili,3.0,616.0
+,,,,620.0,Lindo Mfeka,3.0,620.0
+,,,,621.0,Jacob Lissek,1.0,621.0
+,,,,622.0,Gershon Koffie,3.0,622.0
+,,,,624.0,Deshorn Brown,4.0,624.0
+,,,,628.0,Pele van Anholt,2.0,628.0
+,,,,641.0,Deian Boldor,2.0,641.0
+,,,,651.0,Luis Gonzalez,3.0,651.0
+,,,,665.0,Andraz Struna,2.0,665.0
+,,,,667.0,Kevin Renato Fortes Oliveira,3.0,667.0
+,,,,670.0,Emmanuel Igiebor,3.0,670.0
