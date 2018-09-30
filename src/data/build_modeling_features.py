@@ -10,7 +10,7 @@ from sklearn.preprocessing import minmax_scale
 from sklearn.preprocessing import MinMaxScaler
 
 subdir_seventeen = '2017data'
-subdir_eighteen = '2018datacurrent'
+subdir_eighteen = '2018data'
 
 loc_historical_output = '2018_input_data.csv'
 loc_current_output = '2018_current_data.csv'
