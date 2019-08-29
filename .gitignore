@@ -1,0 +1,6 @@
+__pycache__/
+/data/raw/
+/data/interim/
+/models/
+/notes/
+/src/models_deprecated/
