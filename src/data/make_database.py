@@ -95,9 +95,7 @@ def create_player_stats_table(conn):
 
 def insert_all_data(conn):
     conn.execute("DELETE FROM player_stats WHERE cost IS NOT NULL;")
-    for season in range(
-        data_utilities.SEASON_START, data_utilities.SEASON_CURRENT + 1
-    ):
+    for season in range(data_utilities.SEASON_START, data_utilities.SEASON_CURRENT + 1):
         insert_season_data(conn, season)
 
 
@@ -287,7 +285,10 @@ def _insert_2017_season_data(conn, season):
                 rows_list.append(
                     tuple(
                         player_dict.get(colname, None)
-                        for colname in [col for col in data_utilities.get_player_stats_columns().keys()]
+                        for colname in [
+                            col
+                            for col in data_utilities.get_player_stats_columns().keys()
+                        ]
                     )
                 )
     if len(rows_list) > 0:
@@ -296,6 +297,7 @@ def _insert_2017_season_data(conn, season):
         cur.executemany(query, rows_list)
         conn.connection.commit()
         cur.close()
+
 
 @logging_utilities.instrument_function(logger)
 def _insert_2018_season_data(conn, season):
@@ -513,9 +515,7 @@ def fix_player_home(df, player_team_dict):
     df_final = df.loc[df["home"] != 2].copy()
     df_player_transfered = df.loc[df["home"] == 2]
     df_player_counts = (
-        df_player_transfered.groupby(["player_id"])
-        .size()
-        .reset_index(name="count")
+        df_player_transfered.groupby(["player_id"]).size().reset_index(name="count")
     )
     df_player_transfered = pd.merge(
         df_player_transfered, df_player_counts, how="left", on=["player_id"]
@@ -529,14 +529,14 @@ def fix_player_home(df, player_team_dict):
     df_player_trans_final = pd.DataFrame()
     df_player_transfered = df_player_transfered.loc[df_player_transfered["count"] >= 2]
     for player_id in df_player_transfered["player_id"].unique():
-        df_subset = df.loc[
-            (df["player_id"] == player_id)
-        ].copy()
+        df_subset = df.loc[(df["player_id"] == player_id)].copy()
         old_team = _get_old_team(df_subset)
         new_team = player_team_dict.get(player_id)
         if old_team != "unfound":
             round = _get_round_switch(df_subset, old_team, new_team)
-            print(f'{player_id} switched from {old_team} to {new_team} in round {round}')
+            print(
+                f"{player_id} switched from {old_team} to {new_team} in round {round}"
+            )
             df_subset = df_subset.apply(
                 _fill_correct_team, args=(old_team, round), axis=1
             )
@@ -546,7 +546,9 @@ def fix_player_home(df, player_team_dict):
             df_final = df_final.loc[df["player_id"] != player_id]
     if df_player_trans_final.shape[0] > 5:
         df_player_trans_final.to_csv(
-            data_utilities.get_processed_data_filepath("historical_player_anomalies_fixed"),
+            data_utilities.get_processed_data_filepath(
+                "historical_player_anomalies_fixed"
+            ),
             sep=",",
             index=False,
         )
@@ -574,7 +576,9 @@ def _get_round_switch(df, old_team, new_team):
     for index, row in df.iterrows():
         team = row["team"]
         opponent = row["opponent"]
-        if (new_team == team and old_team != opponent) or (new_team == opponent and old_team != team):
+        if (new_team == team and old_team != opponent) or (
+            new_team == opponent and old_team != team
+        ):
             return row["round"]
     return 0
 

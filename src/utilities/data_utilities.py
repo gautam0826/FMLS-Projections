@@ -7,14 +7,11 @@ from sqlalchemy import create_engine
 
 from src.utilities import config_utilities
 
-CATALOG_FILE = "catalog.yaml"
-
 SEASON_START = 2017
 SEASON_CURRENT = 2020
 SEASON_DIRS = {
-    season: (str(season) + "data") for season in range(SEASON_START, SEASON_CURRENT + 1)
+    season: (f"{season}data") for season in range(SEASON_START, SEASON_CURRENT + 1)
 }
-FILE_PREFIX = str(SEASON_CURRENT) + "_"
 
 
 def get_project_directory() -> str:
@@ -32,10 +29,7 @@ def get_filepath(files: List[str]) -> str:
 
 
 def get_processed_data_filepath(file: str) -> str:
-    catalog = config_utilities.parse_config(CATALOG_FILE)
-    return get_filepath(
-        ["data", "processed", FILE_PREFIX + catalog.get(file, file if '.' in file else f'{file}.csv')]
-    )
+    return get_filepath(["data", "processed", file])
 
 
 def get_raw_data_filepath(files: List[str]) -> str:
@@ -54,11 +48,10 @@ def get_conf_file_path(file: str) -> str:
 
 
 def initialize_db():
-    engine = create_engine(
-        "sqlite:///" + get_processed_data_filepath("fmls.db")
-    )
+    engine = create_engine("sqlite:///" + get_processed_data_filepath("fmls.db"))
     conn = engine.connect()
     return conn
+
 
 # scoring logic
 _att_bps_dict = {
@@ -144,10 +137,29 @@ def all_feature_names() -> List[str]:
 
 def get_player_stats_columns() -> Dict[str, str]:
     column_names = all_feature_names()
-    player_stats_columns = {column_name:'INT' if column_name != 'pcp' else 'FLOAT' for column_name in column_names}
-    player_stats_columns.update({'cost':'FLOAT'})
-    player_stats_columns.update({column:'INT' for column in ['event_id', 'home', 'player_id', 'points', 'position_id', 'round', 'season', 'unique_round']})
-    player_stats_columns.update({column:'TEXT' for column in ['player_name', 'team', 'opponent']})
+    player_stats_columns = {
+        column_name: "INT" if column_name != "pcp" else "FLOAT"
+        for column_name in column_names
+    }
+    player_stats_columns.update({"cost": "FLOAT"})
+    player_stats_columns.update(
+        {
+            column: "INT"
+            for column in [
+                "event_id",
+                "home",
+                "player_id",
+                "points",
+                "position_id",
+                "round",
+                "season",
+                "unique_round",
+            ]
+        }
+    )
+    player_stats_columns.update(
+        {column: "TEXT" for column in ["player_name", "team", "opponent"]}
+    )
     return player_stats_columns
 
 
