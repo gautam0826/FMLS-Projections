@@ -522,7 +522,7 @@ def fix_player_home(df, player_team_dict):
     )
     df_temp = df_player_transfered.loc[df_player_transfered["count"] == 1]
     df_temp.to_csv(
-        data_utilities.get_processed_data_filepath("historical_player_anomalies"),
+        data_utilities.get_processed_data_filepath("historical_player_anomalies.csv"),
         sep=",",
         index=False,
     )
@@ -547,7 +547,7 @@ def fix_player_home(df, player_team_dict):
     if df_player_trans_final.shape[0] > 5:
         df_player_trans_final.to_csv(
             data_utilities.get_processed_data_filepath(
-                "historical_player_anomalies_fixed"
+                "historical_player_anomalies_fixed.csv"
             ),
             sep=",",
             index=False,

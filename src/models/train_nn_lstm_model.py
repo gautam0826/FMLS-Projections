@@ -34,7 +34,7 @@ class NN_Regression_Model(ModelBase):
     @logging_utilities.instrument_function(logger)
     def save_training_data_to_file(self, conn, data_filepath):
         player_stats = pd.read_sql_query(
-            "SELECT * FROM player_stats WHERE mins >= 45 OR unique_round == (SELECT MAX(unique_round) FROM player_stats);",
+            "SELECT player_id, player_name, event_id, season, round, unique_round, opponent, team, position_id, cost, adjusted_points, home FROM player_stats WHERE mins >= 45 OR unique_round == (SELECT MAX(unique_round) FROM player_stats);",
             conn,
         )
         player_lagging_stats = pd.read_sql_query(
@@ -206,19 +206,16 @@ class NN_Regression_Model(ModelBase):
         )
 
         # time series layers
-        lstm_lag_player_stats = layers.LSTM(
-            self.lstm_layer_size, activation="relu", return_sequences=True
+        lstm_lag_player_stats = layers.GRU(
+            self.lstm_layer_size, activation="relu", return_sequences=False
         )(lag_player_stats_masking)
-        lstm_lag_player_stats = layers.LSTM(self.lstm_layer_size, activation="relu")(
-            lstm_lag_player_stats
-        )
-        lstm_lag_opp_stats = layers.LSTM(self.lstm_layer_size, activation="relu")(
+        lstm_lag_opp_stats = layers.GRU(self.lstm_layer_size, activation="relu")(
             lag_opp_stats_masking
         )
-        lstm_lag_team_total_stats = layers.LSTM(
-            self.lstm_layer_size, activation="relu"
-        )(lag_team_total_stats_masking)
-        lstm_lag_opp_total_stats = layers.LSTM(self.lstm_layer_size, activation="relu")(
+        lstm_lag_team_total_stats = layers.GRU(self.lstm_layer_size, activation="relu")(
+            lag_team_total_stats_masking
+        )
+        lstm_lag_opp_total_stats = layers.GRU(self.lstm_layer_size, activation="relu")(
             lag_opp_total_stats_masking
         )
 
@@ -343,7 +340,6 @@ if __name__ == "__main__":
         "advanced_position",
         "points",
     ]
-    unused_cols.extend(data_utilities.all_feature_names())
     target = "adjusted_points"
     model = NN_Regression_Model(parameters, target, unused_cols, rerun_sql=rerun_sql)
     (df_train, df_valid, df_test, df_new) = model.load_training_data()

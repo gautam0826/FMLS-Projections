@@ -86,12 +86,15 @@ class ModelBase(metaclass=ABCMeta):
 
     def calculate_metrics(self, df_test, count_players, suffix=""):
         metrics = {}
-        metrics[f"kendall_tau_correlation{suffix}"] = df_test[self.pred_column].corr(
-            df_test["adjusted_points"], method="kendall"
+        metrics[f"kendall_tau_correlation{suffix}"] = df_test["adjusted_points"].corr(
+            df_test[self.pred_column], method="kendall"
         )
-        metrics[f"spearman_rho_correlation{suffix}"] = df_test[self.pred_column].corr(
-            df_test["adjusted_points"], method="spearman"
+        metrics[f"spearman_rho_correlation{suffix}"] = df_test["adjusted_points"].corr(
+            df_test[self.pred_column], method="spearman"
         )
+        #metrics[f"dcg_score{suffix}"] = dcg_score(
+        #    df_test["adjusted_points"], df_test[self.pred_column]
+        #)
         sum = 0
         num_hits = 0
         for round in df_test["round"].unique():

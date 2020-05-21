@@ -1,6 +1,7 @@
 __pycache__/
 /data/raw/
 /data/interim/
+/data/processed/
 /models/
 /mlruns/
 /logs/
