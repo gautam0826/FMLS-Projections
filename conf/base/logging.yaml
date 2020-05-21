@@ -1,0 +1,41 @@
+version: 1
+disable_existing_loggers: False
+
+# Set different display formats
+formatters:
+    simple:
+        format: "%(asctime)s	%(process)d  %(module)s	  %(levelname)-s: %(message)s"
+    descriptive:
+        format: "%(asctime)s	%(process)d  %(module)s:%(lineno)d	  %(levelname)-s: %(message)s"
+
+# Set-up different handlers, which are channels to display messages.
+# These can be the console or files, for example. You can set
+# the class (type), format, and minimum message display level
+handlers:
+    console:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: simple
+        stream: ext://sys.stdout
+
+    file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: DEBUG
+        mode: a
+        formatter: descriptive
+        filename: logs/info.log
+        # 10MB before rollover
+        maxBytes: 10000000
+        backupCount: 5
+
+loggers:
+    __main__:
+        level: DEBUG
+        handlers: [console, file_handler]
+        propogate: no
+
+# We can raise the message level and add additional handles
+# to root, i.e., the function called from the command line
+# These are displayed as root, or __main__ in the message
+#root:
+#    handlers: [console, file_handler]

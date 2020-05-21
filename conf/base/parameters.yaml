@@ -1,0 +1,20 @@
+test_params:
+    alpha: 0.1
+scrape_data_params:
+    max_connections: 25
+make_database_params:
+    num_testing_rounds: 5
+    refresh_views: false
+build_features_params:
+    max_lag_amount_player: 7
+    max_lag_amount_team: 7
+train_simple_linear_model_params:
+    rerun_sql: false
+    upper: 15
+    lower: 2
+train_neural_network_lstm_params:
+    rerun_sql: false
+    upper: 15
+    lower: 2
+    lstm_layer_size: 32
+    normal_layer_size: 32

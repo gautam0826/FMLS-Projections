@@ -1,0 +1,256 @@
+aps:
+    type: INT
+ass:
+    type: INT
+    bonus:
+        3:[1,2,3,4]
+    bonus_type: att_points
+bc:
+    type: INT
+    bonus:
+        1:[1,2,3,4]
+    bonus_type: att_bps
+blk:
+    type: INT
+    bonus:
+        (1/2):[1,2,3,4]
+    bonus_type: def_bps
+br:
+    type: INT
+    bonus:
+        (1/6):[1,2,3,4]
+    bonus_type: def_bps
+cl:
+    type: INT
+    bonus:
+        (1/4):[1,2,3,4]
+    bonus_type: def_bps
+crs:
+    type: INT
+    bonus:
+        (1/3):[1,2,3,4]
+    bonus_type: att_bps
+cs:
+    type: INT
+    bonus:
+        5:[1,2]
+        1:[3]
+    bonus_type: def_points
+elg:
+    type: INT
+    bonus:
+        5:[1,2]
+        1:[3]
+    bonus_type: points
+gc:
+    type: INT
+    bonus:
+        (-1 / 2):[1,2]
+    bonus_type: def_points
+gls:
+    type: INT
+    bonus:
+        6:[1,2]
+        5:[3,4]
+    bonus_type: att_points
+intc:
+    type: INT
+    bonus:
+        (1/4):[1,2,3,4]
+    bonus_type: def_bps
+kp:
+    type: INT
+    bonus:
+        (1/3):[1,2,3,4]
+    bonus_type: att_bps
+mins:
+    type: INT
+    bonus:
+        (1/60):[1,2,3,4]
+    bonus_type: adjusted_points
+og:
+    type: INT
+    bonus:
+        -2:[1,2,3,4]
+    bonus_type: points
+oga:
+    type: INT
+    bonus:
+        1:[1,2,3,4]
+    bonus_type: att_bps
+pcp:
+    type: FLOAT
+pe:
+    type: INT
+    bonus:
+        2:[1,2,3,4]
+    bonus_type: att_bps
+pm:
+    type: INT
+    bonus:
+        -2:[1,2,3,4]
+    bonus_type: points
+ps:
+    type: INT
+    bonus:
+        5:[1,2,3,4]
+    bonus_type: points
+pss:
+    type: INT
+rc:
+    type: INT
+    bonus:
+        -3:[1,2,3,4]
+    bonus_type: points
+sh:
+    type: INT
+    bonus:
+        (1/4):[1,2,3,4]
+    bonus_type: att_bps
+sv:
+    type: INT
+    bonus:
+        (1/3):[1,2,3,4]
+    bonus_type: def_bps
+tck:
+    type: INT
+    bonus:
+        (1/4):[1,2,3,4]
+    bonus_type: def_bps
+wf:
+    type: INT
+    bonus:
+        (1/4):[1,2,3,4]
+    bonus_type: def_bps
+yc:
+    type: INT
+    bonus:
+        (1/4):[1,2,3,4]
+    bonus_type: adjusted_points
+
+event_id:
+    type: INT
+home:
+    type: INT
+opponent:
+    type: TEXT
+player_id:
+    type: INT
+player_name:
+    type: TEXT
+position_id:
+    type: INT
+round:
+    type: INT
+season:
+    type: INT
+team:
+    type: TEXT
+unique_round:
+    type: INT
+cost:
+    type: FLOAT
+
+adjusted_points:
+    type: INT
+    components:
+        elg:
+            all:-1
+        rc:
+            all:-3
+        og:
+            all:-2
+        ps:
+            all:5
+        pm:
+            all:-2
+att_bps:
+    type: INT
+    components:
+        sh:
+            function: floor
+            all:(1 / 4)
+        crs:
+            function: floor
+            all:(1 / 3)
+        kp:
+            function: floor
+            all:(1 / 3)
+        bc:
+            all:1
+        wf:
+            function: floor
+            all:(1 / 4)
+        oga:
+            all:1
+        pe:
+            all:2
+att_points:
+    type: INT
+    components:
+        gls:
+            1:6
+            2:6
+            3:5
+            4:5
+        ass:
+            all:3
+def_bps:
+    type: INT
+    components:
+        cl:
+            function: floor
+            all:(1/4)
+        blk:
+            function: floor
+            all:(1/2)
+        intc:
+            function: floor
+            all:(1/4)
+        tck:
+            function: floor
+            all:(1/4)
+        br:
+            function: floor
+            all:(1/6)
+        sv:
+            function: floor
+            all:(1/3)
+def_points:
+    type: INT
+    components:
+        cs:
+            1:5
+            2:5
+            3:1
+            4:0
+        gc:
+            function: ceil
+            1:(-1/2)
+            2:(-1/2)
+            3:0
+            4:0
+pas_bps:
+    type: INT
+    aggregate: product
+    components:
+        aps:
+            function: floor
+            all: (1/35)
+        pcp:
+            function: ifelse
+            all:0.85
+        
+points:
+    type: INT
+    aggregate: sum
+    components:
+        yc:
+            all:-1
+        mins:
+            function: floor
+            all:(1/60)
+total_bps:
+    type: INT
+    aggregate: sum
+    component

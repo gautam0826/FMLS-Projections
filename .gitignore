@@ -2,5 +2,8 @@ __pycache__/
 /data/raw/
 /data/interim/
 /models/
+/mlruns/
+/logs/
 /notes/
 /src/models_deprecated/
+/conf/local/

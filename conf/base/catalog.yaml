@@ -1,0 +1,13 @@
+name_matching: player_ids.csv
+historical_stageing: staged_data.csv
+historical_player_stats: historical_player_stats.csv
+historical_team_stats: historical_team_stats.csv
+current_gameweek: current_gameweek.csv
+historical_player_anomalies: historical_player_anomalies.csv
+train_nn_data: training_nn_data.csv
+test_nn_data: testing_nn_data.csv
+current_nn_data: current_nn_data.csv
+test_nn_predictions: testing_nn_predictions.csv
+current_nn_predictions: current_nn_predictions.csv
+clustering_data: clustering_data.csv
+clustering_output: clustering_output.csv
