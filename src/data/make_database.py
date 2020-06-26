@@ -2,6 +2,7 @@ import json
 import logging
 import os
 
+import dateutil
 import pandas as pd
 import unidecode
 from jinja2 import Template
@@ -80,6 +81,7 @@ logger = logging.getLogger(__name__)
 
 
 def execute_templated_sql_script(conn, template, template_args_dict):
+    # TODO: possibly write to folder with complete, non-templated sql scripts
     sql_script = Template(template).render(**template_args_dict)
     # logger.critical(sql_script)
     conn.execute(sql_script)
@@ -132,7 +134,7 @@ def _insert_2017_season_data(conn, season):
         8: "LA",
         9: "NE",
         10: "NYC",
-        11: "NY",
+        11: "RBNY",
         12: "ORL",
         13: "PHI",
         14: "POR",
@@ -149,7 +151,7 @@ def _insert_2017_season_data(conn, season):
         "364,1": "TOR",
         "364,0": "ATL",
         "365,1": "DC",
-        "365,0": "NY",
+        "365,0": "RBNY",
         "366,1": "DAL",
         "366,0": "LA",
         "367,1": "HOU",
@@ -177,11 +179,8 @@ def _insert_2017_season_data(conn, season):
     )
     for entry in fixture_data:
         event_id = entry["id"]
-        round_id = entry["event"]
-        h_index = entry["team_h"]
-        a_index = entry["team_a"]
-        home_team = short_name_dict[h_index]
-        away_team = short_name_dict[a_index]
+        home_team = short_name_dict[entry["team_h"]]
+        away_team = short_name_dict[entry["team_a"]]
         home_dict[str(event_id) + ",1"] = home_team
         home_dict[str(event_id) + ",0"] = away_team
 
@@ -204,99 +203,55 @@ def _insert_2017_season_data(conn, season):
             )
         )
         for player_entry in player_data["history"]:
-            # points = player_entry['total_points']
-            mins = player_entry["minutes"]
-            if round_id not in saved_rounds and mins > 0:
-                gls = player_entry["goals_scored"]
-                ass = player_entry["assists"]
-                cs = player_entry["clean_sheets"]
-                sv = player_entry["saves"]
-                pe = player_entry["penalties_earned"]
-                ps = player_entry["penalties_saved"]
-                pm = player_entry["penalties_missed"]
-                gc = player_entry["goals_conceded"]
-                yc = player_entry["yellow_cards"]
-                rc = player_entry["red_cards"]
-                og = player_entry["own_goals"]
-                oga = player_entry["own_goal_earned"]
-                sh = player_entry["shots"]
-                wf = player_entry["was_fouled"]
-                pss = player_entry["attempted_passes"]
-                aps = player_entry["completed_passes"]
-                pcp = aps / pss if pss > 0 else 0
-                crs = player_entry["crosses"]
-                kp = player_entry["key_passes"]
-                bc = player_entry["big_chances_created"]
-                cl = player_entry["clearances"]
-                blk = player_entry["blocks"]
-                intc = player_entry["interceptions"]
-                tck = player_entry["tackles"]
-                br = player_entry["recoveries"]
-                elg = player_entry["errors_leading_to_goal"]
-                cost = (
-                    player_entry["value"] / 10
-                )  # divide by 10 since costs are multiplied by 10 in raw json files to store it as an int instead of double
-
-                round_id = player_entry["round"]
-                event_id = player_entry["fixture"]
+            if player_entry["round"] not in saved_rounds and player_entry["minutes"] > 0:
                 home = int(player_entry["was_home"])
-                opponent = short_name_dict[player_entry["opponent_team"]]
-                team = home_dict[str(event_id) + "," + str(home)]
-
                 player_dict = {
-                    "mins": mins,
-                    "gls": gls,
-                    "ass": ass,
-                    "cs": cs,
-                    "sv": sv,
-                    "pe": pe,
-                    "ps": ps,
-                    "pm": pm,
-                    "gc": gc,
-                    "yc": yc,
-                    "rc": rc,
-                    "og": og,
-                    "oga": oga,
-                    "sh": sh,
-                    "wf": wf,
-                    "pss": pss,
-                    "aps": aps,
-                    "pcp": pcp,
-                    "crs": crs,
-                    "kp": kp,
-                    "bc": bc,
-                    "cl": cl,
-                    "blk": blk,
-                    "intc": intc,
-                    "tck": tck,
-                    "br": br,
-                    "elg": elg,
+                    "mins": player_entry["minutes"],
+                    "gls": player_entry["goals_scored"],
+                    "ass": player_entry["assists"],
+                    "cs": player_entry["clean_sheets"],
+                    "sv": player_entry["saves"],
+                    "pe": player_entry["penalties_earned"],
+                    "ps": player_entry["penalties_saved"],
+                    "pm": player_entry["penalties_missed"],
+                    "gc": player_entry["goals_conceded"],
+                    "yc": player_entry["yellow_cards"],
+                    "rc": player_entry["red_cards"],
+                    "og": player_entry["own_goals"],
+                    "oga": player_entry["own_goal_earned"],
+                    "sh": player_entry["shots"],
+                    "wf": player_entry["was_fouled"],
+                    "pss": player_entry["attempted_passes"],
+                    "aps": player_entry["completed_passes"],
+                    "pcp": player_entry["completed_passes"] / player_entry["completed_passes"] if player_entry["completed_passes"] > 0 else 0,
+                    "crs": player_entry["crosses"],
+                    "kp": player_entry["key_passes"],
+                    "bc": player_entry["big_chances_created"],
+                    "cl": player_entry["clearances"],
+                    "blk": player_entry["blocks"],
+                    "intc": player_entry["interceptions"],
+                    "tck": player_entry["tackles"],
+                    "br": player_entry["recoveries"],
+                    "elg": player_entry["errors_leading_to_goal"],
+                    #"cost": (player_entry["value"] / 10),
                     "position_id": position_id,
                     "player_id": player_id,
                     "player_name": player_name,
-                    "team": team,
-                    "round": round_id,
-                    "event_id": event_id,
-                    "opponent": opponent,
+                    "team": home_dict[f"{event_id},{home}"],
+                    "round": player_entry["round"],
+                    "event_id": player_entry["fixture"],
+                    "opponent": short_name_dict[player_entry["opponent_team"]],
                     "home": home,
                     "season": season,
+                    "date": dateutil.parser.parse(player_entry["kickoff_time"]),
                 }
-                player_dict = data_utilities.fantasy_score(player_dict)
-                rows_list.append(
-                    tuple(
-                        player_dict.get(colname, None)
-                        for colname in [
-                            col
-                            for col in data_utilities.get_player_stats_columns().keys()
-                        ]
-                    )
-                )
+                player_dict = data_utilities.calculate_fantasy_scores(player_dict)
+                rows_list.append(player_dict)
     if len(rows_list) > 0:
-        query = Template(INSERT_TEMPLATE).render(n_columns=len(rows_list[0]),)
-        cur = conn.connection.cursor()
-        cur.executemany(query, rows_list)
+        df_player_stats = pd.DataFrame(rows_list)
+        df_player_stats['date'] = pd.to_datetime(df_player_stats['date'], utc=True)
+        df_player_stats.to_sql("player_stats", conn, if_exists="append", index=False)
         conn.connection.commit()
-        cur.close()
 
 
 @logging_utilities.instrument_function(logger)
@@ -323,6 +278,7 @@ def _insert_2018_season_data(conn, season):
         team_id = team_entry["id"]
         team_name = team_entry["short_name"]
         team_id_dict[team_id] = team_name
+    team_id_dict[399] = "RBNY"  # fix New York Red Bulls short name change
 
     player_data = json.load(
         open(data_utilities.get_raw_data_filepath([season_subdir, "Players.json"]), "r")
@@ -361,10 +317,9 @@ def _insert_2018_season_data(conn, season):
             matches = match_round["matches"]
             for match in matches:
                 match_id = match["id"]
-                home_squad_id = match["home_squad_id"]
-                away_squad_id = match["away_squad_id"]
-                home_squad_short_name = match["home_squad_short_name"]
-                away_squad_short_name = match["away_squad_short_name"]
+                date = dateutil.parser.parse(match["date"])
+                home_squad_short_name = team_id_dict[match["home_squad_id"]]
+                away_squad_short_name = team_id_dict[match["away_squad_id"]]
                 match_data = json.load(
                     open(
                         data_utilities.get_raw_data_filepath(
@@ -376,121 +331,83 @@ def _insert_2018_season_data(conn, season):
                 for player_data in match_data:
                     player_id = player_data["player_id"]
                     player_entry = player_data["stats"]
-                    mins = player_entry["MIN"]
-                    if mins > 0:
+                    if player_entry["MIN"] > 0:
                         team = player_team_dict.get(player_id)
-                        position_id = player_position_dict.get(player_id)
-                        player_name = player_name_dict.get(player_id)
-                        gls = player_entry["GL"]
-                        ass = player_entry["ASS"]
-                        cs = player_entry["CS"]
-                        sv = player_entry["SV"]
-                        pe = player_entry["PE"]
-                        ps = player_entry["PS"]
-                        pm = player_entry["PM"]
-                        gc = player_entry["GC"]
-                        yc = player_entry["YC"]
-                        rc = player_entry["RC"]
-                        og = player_entry["OG"]
-                        oga = player_entry["OGA"]
-                        sh = player_entry["SH"]
-                        wf = player_entry["WF"]
-                        pss = player_entry["PSS"]
-                        aps = player_entry["APS"]
-                        pcp = aps / pss if pss > 0 else 0
-                        crs = player_entry["CRS"]
-                        kp = player_entry["KP"]
-                        bc = player_entry["BC"]
-                        cl = player_entry["CL"]
-                        blk = player_entry["BLK"]
-                        intc = player_entry["INT"]
-                        tck = player_entry["TCK"]
-                        br = player_entry["BR"]
-                        elg = player_entry["ELG"]
-
                         if team == home_squad_short_name:
                             home = 1
-                            team_id = home_squad_id
-                            opponent_id = away_squad_id
                             team = home_squad_short_name
                             opponent = away_squad_short_name
                         elif team == away_squad_short_name:
                             home = 0
-                            team_id = away_squad_id
-                            opponent_id = home_squad_id
                             team = away_squad_short_name
                             opponent = home_squad_short_name
                         else:
                             home = 2
-                            team_id = away_squad_id
-                            opponent_id = home_squad_id
                             team = away_squad_short_name
                             opponent = home_squad_short_name
 
                         player_dict = {
-                            "mins": mins,
-                            "gls": gls,
-                            "ass": ass,
-                            "cs": cs,
-                            "sv": sv,
-                            "pe": pe,
-                            "ps": ps,
-                            "pm": pm,
-                            "gc": gc,
-                            "yc": yc,
-                            "rc": rc,
-                            "og": og,
-                            "oga": oga,
-                            "sh": sh,
-                            "wf": wf,
-                            "pss": pss,
-                            "aps": aps,
-                            "pcp": pcp,
-                            "crs": crs,
-                            "kp": kp,
-                            "bc": bc,
-                            "cl": cl,
-                            "blk": blk,
-                            "intc": intc,
-                            "tck": tck,
-                            "br": br,
-                            "elg": elg,
-                            "position_id": position_id,
+                            "mins": player_entry["MIN"],
+                            "gls": player_entry["GL"],
+                            "ass": player_entry["ASS"],
+                            "cs": player_entry["CS"],
+                            "sv": player_entry["SV"],
+                            "pe": player_entry["PE"],
+                            "ps": player_entry["PS"],
+                            "pm": player_entry["PM"],
+                            "gc": player_entry["GC"],
+                            "yc": player_entry["YC"],
+                            "rc": player_entry["RC"],
+                            "og": player_entry["OG"],
+                            "oga": player_entry["OGA"],
+                            "sh": player_entry["SH"],
+                            "wf": player_entry["WF"],
+                            "pss": player_entry["PSS"],
+                            "aps": player_entry["APS"],
+                            "pcp": player_entry["PSS"] / player_entry["APS"] if player_entry["APS"] > 0 else 0,
+                            "crs": player_entry["CRS"],
+                            "kp": player_entry["KP"],
+                            "bc": player_entry["BC"],
+                            "cl": player_entry["CL"],
+                            "blk": player_entry["BLK"],
+                            "intc": player_entry["INT"],
+                            "tck": player_entry["TCK"],
+                            "br": player_entry["BR"],
+                            "elg": player_entry["ELG"],
+                            "position_id": player_position_dict.get(player_id),
                             "player_id": player_id,
-                            "player_name": player_name,
+                            "player_name": player_name_dict.get(player_id),
                             "team": team,
                             "round": round_id,
                             "event_id": match_id,
                             "opponent": opponent,
                             "home": home,
                             "season": season,
+                            "date": date,
                         }
-                        player_dict = data_utilities.fantasy_score(player_dict)
+                        player_dict = data_utilities.calculate_fantasy_scores(player_dict)
                         historical_rows_list.append(player_dict)
         elif round_id not in saved_rounds and not hit_current_round:
             hit_current_round = True
             matches = match_round["matches"]
             for match in matches:
-                match_id = match["id"]
-                home_squad_id = match["home_squad_id"]
-                away_squad_id = match["away_squad_id"]
-                home_squad_short_name = match["home_squad_short_name"]
-                away_squad_short_name = match["away_squad_short_name"]
                 home_dict = {
                     "round": round_id,
-                    "event_id": match_id,
-                    "opponent": away_squad_short_name,
-                    "team": home_squad_short_name,
+                    "event_id": match["id"],
+                    "opponent": team_id_dict[match["away_squad_id"]],
+                    "team": team_id_dict[match["home_squad_id"]],
                     "home": 1,
                     "season": season,
+                    "date": dateutil.parser.parse(match["date"]),
                 }
                 away_dict = {
                     "round": round_id,
-                    "event_id": match_id,
-                    "opponent": home_squad_short_name,
-                    "team": away_squad_short_name,
+                    "event_id": match["id"],
+                    "opponent": team_id_dict[match["home_squad_id"]],
+                    "team": team_id_dict[match["away_squad_id"]],
                     "home": 0,
                     "season": season,
+                    "date": dateutil.parser.parse(match["date"]),
                 }
                 opponent_rows_list.append(home_dict)
                 opponent_rows_list.append(away_dict)
@@ -499,6 +416,7 @@ def _insert_2018_season_data(conn, season):
         df_historical = pd.DataFrame(historical_rows_list)
         # some home\away team and opponent info is messed up due to Fanhub only storing players current team so immidiately fix
         df_historical = df_historical.pipe(fix_player_home, player_team_dict)
+        df_historical['date'] = pd.to_datetime(df_historical['date'], utc=True)
         df_historical.to_sql("player_stats", conn, if_exists="append", index=False)
         conn.connection.commit()
     if len(opponent_rows_list) > 0:
@@ -506,6 +424,7 @@ def _insert_2018_season_data(conn, season):
         df_player = pd.DataFrame(player_rows_list)
         df_opponent = pd.DataFrame(opponent_rows_list)
         df_current = pd.merge(df_player, df_opponent, how="right", on=["team"])
+        df_current['date'] = pd.to_datetime(df_current['date'], utc=True)
         df_current.to_sql("player_stats", conn, if_exists="append", index=False)
         conn.connection.commit()
 
@@ -534,7 +453,7 @@ def fix_player_home(df, player_team_dict):
         new_team = player_team_dict.get(player_id)
         if old_team != "unfound":
             round = _get_round_switch(df_subset, old_team, new_team)
-            print(
+            logger.critical(
                 f"{player_id} switched from {old_team} to {new_team} in round {round}"
             )
             df_subset = df_subset.apply(
@@ -635,6 +554,7 @@ def create_team_stats_view(conn):
 
 @logging_utilities.instrument_function(logger)
 def create_name_matching_view(conn):
+    # manually match together players by id whose names have changed
     player_id_match_dict = {
         36: 163042,  # Michael Azira
         71: 148995,  # Wil Trapp

@@ -38,10 +38,10 @@ def download_data(url, headers, outfile_path, timeout=15):
 
 
 def download_match_data(match_id, overwrite=False):
-    url = BASE_URL + "stats/" + str(match_id) + ".json"
+    url = BASE_URL + f"stats/{match_id}.json"
     headers = None
     outfile_path = data_utilities.get_raw_data_filepath(
-        [CURRENT_SUBDIR, "Matches", "Match" + str(match_id) + ".json"]
+        [CURRENT_SUBDIR, "Matches", f"Match{match_id}.json"]
     )
     if not overwrite and os.path.exists(outfile_path):
         return (200, match_id)
@@ -49,10 +49,10 @@ def download_match_data(match_id, overwrite=False):
 
 
 def download_player_data(player_id):
-    url = BASE_URL + "stats/players/" + str(player_id) + ".json"
+    url = BASE_URL + f"stats/players/{player_id}.json"
     headers = None
     outfile_path = data_utilities.get_raw_data_filepath(
-        [CURRENT_SUBDIR, "Players", "Player" + str(player_id) + ".json"]
+        [CURRENT_SUBDIR, "Players", f"Player{player_id}.json"]
     )
     return (download_data(url, headers, outfile_path), player_id)
 
@@ -60,7 +60,7 @@ def download_player_data(player_id):
 def download_general_json():
     pages = ["Squads", "Players", "Rounds", "Venues"]
     for page in pages:
-        file = page + ".json"
+        file = f"{page}.json"
         download_data(
             BASE_URL + file.lower(),
             None,

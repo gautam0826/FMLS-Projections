@@ -158,12 +158,12 @@ def get_player_stats_columns() -> Dict[str, str]:
         }
     )
     player_stats_columns.update(
-        {column: "TEXT" for column in ["player_name", "team", "opponent"]}
+        {column: "TEXT" for column in ["player_name", "team", "opponent", "date"]}
     )
     return player_stats_columns
 
 
-def fantasy_score(stats_dict: Dict[str, Any]) -> Dict[str, Any]:
+def calculate_fantasy_scores(stats_dict: Dict[str, Any]) -> Dict[str, Any]:
     position_id = stats_dict["position_id"]
     if position_id == 1 or position_id == 2:
         _extra_att_pts_dict = _1_2_extra_att_pts_dict

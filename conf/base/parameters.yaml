@@ -12,9 +12,17 @@ train_simple_linear_model_params:
     rerun_sql: true
     upper: 15
     lower: 2
+train_robust_simple_linear_model_params:
+    rerun_sql: true
+    upper: 15
+    lower: 2
 train_nn_lstm_model_params:
     rerun_sql: true
     upper: 15
     lower: 2
     lstm_layer_size: 32
     normal_layer_size: 32
+train_gbm_model_params:
+    rerun_sql: true
+    upper: 15
+    lower: 2

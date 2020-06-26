@@ -32,6 +32,7 @@ class ModelBase(metaclass=ABCMeta):
             for col in df.columns
             if col not in self.unused_cols and col != self.target
         ]
+        df[self.target] = df[self.target].clip(upper=self.upper, lower=self.lower)
         df_train = df.loc[df["dataset"] == "training"].copy()
         df_valid = df.loc[df["dataset"] == "validation"].copy()
         df_test = df.loc[df["dataset"] == "testing"].copy()

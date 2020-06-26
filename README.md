@@ -19,10 +19,9 @@ python -m src.models.train_nn_lstm_model --lstm_layer_size=32
 ## Objectives:
 ------
  - Create a system to aid the decision-making of fantasy players by distinguishing MLS players who are likely to perform well in Fantasy MLS from those who will not.
- - Create a system where it is easy to try and robustly compare different approaches to achieve objective #1. Be able to compare state-of-the-art machine learning models with simple heuristics-based models, and classification approaches with regression approaches.
+ - Create a system where it is easy to try and robustly compare different approaches to achieve objective #1. Be able to compare state-of-the-art machine learning models with simple heuristics-based models, and classification approaches with regression approaches. People can comfortably plug-in and integrate their own ideas for data transformations and modeling.
  - Make sure predictions are explainable and informative. Using techniques like Shapley values can help tell fantasy players why the model predicted the values it predicted, which is more helpful than telling players to blindly trust the model's judgement. Also knowing a predictive distribution instead of just a number greatly helps assess potential risk.
  - Reduce the difficulty of people trying to run or work on this project. The project should be able to run completely on a laptop without cloud services necessary, and the python scripts should all be individually executable instead of using external commands.
- - Create a module where people can comfortably plug-in and integrate their own ideas for data transformations and models.
 
 ## Details:
 ------
@@ -48,7 +47,7 @@ The current features being used by the neural network are:
  - Binary Home variable
  - \# of matches in given round(to spot international breaks)
 
-Additionally, instead of predicting just a player's fantasy points, the model is trained on adjusted points, filtering out low frequency noisy events like own goals and red cards. Adjusted points are further winsorized into a range of 2 to 15 since discriminating between low and extremely low or high and extremely high points is not necessary. The network also predicts the probability of each score between 2 and 15 instead of just predicting a number, giving a more complete assessment of players’ floors and ceilings. Neural networks were used because of their ability to learn complex features from very “raw” data like image pixels. Potentially other machine learning algorithms can be used, although doing PCA on the lagged statistics or replacing lagged statistics with averaged statistics will probably be needed to reduce the data’s dimensionality.
+Additionally, instead of predicting just a player's fantasy points, the model is trained on adjusted points, filtering out low frequency noisy events like own goals and red cards. Adjusted points are further winsorized into a range of 2 to 15 since discriminating between low and extremely low or high and extremely high points is not necessary. The network also predicts the probability of each score between 2 and 15 instead of just predicting a number, giving a more complete assessment of players’ floors and ceilings. Neural networks were used because of their ability to learn complex features from very “raw” data like image pixels. Potentially other machine learning algorithms can be used, although doing PCA on the lagged statistics or replacing lagged statistics with averaged statistics will probably be needed to reduce the data’s dimensionality.  The way data is fed into the model also preserves the relation between columns, essentially making the model "see" the data the same way humans see each player's scoring history in a table, so the model "knows" that the lagged goal numbers are for the same statistic. A LSTM was chosen specifically because of how it deals with time series data.
 
 ##### Approach #2: Time weighted models
  - The current features being used by the linear model are:
@@ -58,6 +57,8 @@ Additionally, instead of predicting just a player's fantasy points, the model is
  - Player’s last 6 adjusted points average
  - One-hot-encoded opponent variable
  - One-hot encoded team variable
+ - Day of week (Wednesday, Friday, Saturday, Sunday)
+ - Interaction terms between advanced position and opponent, home and team, home and opponent
 
 This means using sample weights(with the weight in proportion to how close the previous week is to current week) and keeping dummy columns for different opponents instead of using lagging statistics. Currently, a simple GLM is the model being used, due to the easily interpretable nature of coefficients. Using Multilevel models instead of simple GLMs could also be interesting.
 
@@ -73,12 +74,9 @@ The problem can be thought of as a mix of a ranking problem, classification and 
 
 ## Future plans:
 ------
- - Include match timestamps when extracting raw data
- - Try using tsfresh library to generate features
- - New feature for day of week (maybe midweek DGW games are more high scoring)
- - New feature for differentiating between the first and second DGW game
+ - Using featuretools and/or tsfresh libraries to automatically generate features
  - New feature for days since player’s last game (rust)
- - New feature for if  a player is team’s attacker/defender with the most/second-most shots/key passes (maybe some teams let up more to secondary attacker)
+ - New feature for if a player is team’s attacker/defender with the most/second-most shots/key passes (maybe some teams let up more to secondary attacker)
  - New feature for out-of-position players (Ex: forward listed as defender)
  - Scraping betting odds (may be a little out of scope for this project)
  - Indirectly predicting performance

@@ -25,7 +25,7 @@ class Simple_Linear_Model(ModelBase):
     @logging_utilities.instrument_function(logger)
     def save_training_data_to_file(self, conn, data_filepath):
         player_stats = pd.read_sql_query(
-            "SELECT player_id, player_name, event_id, season, round, unique_round, opponent, team, position_id, cost, adjusted_points, home, AVG(adjusted_points) OVER (PARTITION BY player_id ORDER BY unique_round ROWS BETWEEN 6 PRECEDING AND 1 PRECEDING) last_6_avg FROM player_stats WHERE mins >= 45 OR unique_round == (SELECT MAX(unique_round) FROM player_stats);",
+            'SELECT player_id, player_name, event_id, season, round, unique_round, opponent, team, position_id, cost, adjusted_points, home, SUBSTR("SunMonTueWedThuFriSatSun", 3*STRFTIME("%w", date) + 1, 3) AS weekday, AVG(adjusted_points) OVER (PARTITION BY player_id ORDER BY unique_round ROWS BETWEEN 6 PRECEDING AND 1 PRECEDING) last_6_avg FROM player_stats WHERE mins >= 45 OR unique_round == (SELECT MAX(unique_round) FROM player_stats);',
             conn,
         )
         train_test_split = pd.read_sql_query("SELECT * FROM train_test_split;", conn)
@@ -77,8 +77,11 @@ class Simple_Linear_Model(ModelBase):
 
     def build_model(self):
         # TODO: hierarchichal glms work from version 3.28.0.1 onwards
+        interaction_pairs = [("advanced_position", "opponent"),
+                            ("home", "team"),
+                            ("home", "opponent"),]
         model = H2OGeneralizedLinearEstimator(
-            family="poisson", weights_column="sample_weight",
+            family="poisson", weights_column="sample_weight", interaction_pairs=interaction_pairs, Lambda=0.0001, alpha=1
         )
         return model
 
