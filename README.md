@@ -3,17 +3,20 @@
 
 ## Basic Usage:
 ------
-The project follows the basic [Cookiecutter for Data Science template](https://drivendata.github.io/cookiecutter-data-science/), with a few modifications taking inspiration from the [Kedro project structure](https://kedro.readthedocs.io/en/stable/02_getting_started/04_hello_world.html). The `scrape_data` script saves FMLS JSON data to the `data/raw` folder. The `make_database` script creates a SQLite database with FMLS statistics. The `build_features` script creates views for machine learning models. The final two scripts, `train_simple_linear_model` and `train_nn_lstm_model` train machine learning models on the data and output predictions for the upcoming week.
+The project follows the basic [Cookiecutter for Data Science template](https://drivendata.github.io/cookiecutter-data-science/), with a few modifications taking inspiration from the [Kedro project structure](https://kedro.readthedocs.io/en/stable/02_getting_started/04_hello_world.html). The `scrape_data` script saves FMLS JSON data to the `data/raw` folder. The `make_database` script creates a SQLite database with FMLS statistics. The `build_features` script creates views for machine learning models. The final five scripts, `train_simple_linear_model`, `train_robust_simple_linear_model`, `train_gbm_model`, `train_rnn_model` and `train_cnn_model` train machine learning models on the data and output predictions for the upcoming week.
 ```
 python -m src.data.scrape_data
 python -m src.data.make_database
 python -m src.data.build_features
 python -m src.models.train_simple_linear_model
-python -m src.models.train_nn_lstm_model
+python -m src.models.train_robust_simple_linear_model
+python -m src.models.train_gbm_model
+python -m src.models.train_rnn_model
+python -m src.models.train_cnn_model
 ```
-Program parameters default values are set in `conf/base/parameters.yaml` and can be overidden by including command line arguments like shown
+Program parameters default values are set in `conf/base/parameters.yaml` and can be overidden by creating a local parameters file in `conf/local/parameters.yaml` or by including command line arguments like shown
 ```
-python -m src.models.train_nn_lstm_model --lstm_layer_size=32
+python -m src.models.train_rnn_model --normal_layer_size=64
 ```
 
 ## Objectives:
@@ -33,7 +36,7 @@ Data from the raw data folder is wrangled into a table where every row contains 
 ### Explore:
 Exploratory Jupyter notebooks will be ported over to Python scripts soon. Visualizations were made to understand how each opponent impacts each position and how different models compare in predictive strength.
 ### Model:
-A SQL query that joins all the necessary data from views is coupled to each model. That data is loaded into a pandas dataframe to allow for non-SQL operations to be done on the data, like calculating standard deviation, and written to a Parquet file for fast reading. The model template also logs back metrics, saves, and loads models using the MLFlow library. Right now, the first two approaches are represented in the files `train_simple_linear_model` and `train_nn_lstm_model`.
+A SQL query that joins all the necessary data from views is coupled to each model. That data is loaded into a pandas dataframe to allow for non-SQL operations to be done on the data, like calculating standard deviation, and written to a Parquet file for fast reading. The model template also logs back metrics, saves, and loads models using the MLFlow library. Right now, the first approaches is represented in the files `train_simple_linear_model` and `train_robust_simple_linear_model`, while the second approach is represented in `train_rnn_model` and `train_cnn_model`.
 
 ##### Approach #1: Pure machine learning
 The current features being used by the neural network are:
@@ -47,7 +50,7 @@ The current features being used by the neural network are:
  - Binary Home variable
  - \# of matches in given round(to spot international breaks)
 
-Additionally, instead of predicting just a player's fantasy points, the model is trained on adjusted points, filtering out low frequency noisy events like own goals and red cards. Adjusted points are further winsorized into a range of 2 to 15 since discriminating between low and extremely low or high and extremely high points is not necessary. The network also predicts the probability of each score between 2 and 15 instead of just predicting a number, giving a more complete assessment of players’ floors and ceilings. Neural networks were used because of their ability to learn complex features from very “raw” data like image pixels. Potentially other machine learning algorithms can be used, although doing PCA on the lagged statistics or replacing lagged statistics with averaged statistics will probably be needed to reduce the data’s dimensionality.  The way data is fed into the model also preserves the relation between columns, essentially making the model "see" the data the same way humans see each player's scoring history in a table, so the model "knows" that the lagged goal numbers are for the same statistic. A LSTM was chosen specifically because of how it deals with time series data.
+Additionally, instead of predicting just a player's fantasy points, the model is trained on adjusted points, filtering out low frequency noisy events like own goals and red cards. Adjusted points are further winsorized into a range of 2 to 15 since discriminating between low and extremely low or high and extremely high points is not necessary. The network also predicts the probability of each score between 2 and 15 instead of just predicting a number, giving a more complete assessment of players’ floors and ceilings. Neural networks were used because of their ability to learn complex features from very “raw” data like image pixels. Potentially other machine learning algorithms can be used, although doing PCA on the lagged statistics or replacing lagged statistics with averaged statistics will probably be needed to reduce the data’s dimensionality.  The way data is fed into the model also preserves the relation between columns, essentially making the model "see" the data the same way humans see each player's scoring history in a table, so the model "knows" that the lagged goal numbers are for the same statistic. Recurrent neural networks and Convolutional neural networks were chosen specifically because of how they deal with time series data.
 
 ##### Approach #2: Time weighted models
  - The current features being used by the linear model are:
@@ -58,6 +61,7 @@ Additionally, instead of predicting just a player's fantasy points, the model is
  - One-hot-encoded opponent variable
  - One-hot encoded team variable
  - Day of week (Wednesday, Friday, Saturday, Sunday)
+ - Days since player’s last game
  - Interaction terms between advanced position and opponent, home and team, home and opponent
 
 This means using sample weights(with the weight in proportion to how close the previous week is to current week) and keeping dummy columns for different opponents instead of using lagging statistics. Currently, a simple GLM is the model being used, due to the easily interpretable nature of coefficients. Using Multilevel models instead of simple GLMs could also be interesting.
@@ -75,7 +79,6 @@ The problem can be thought of as a mix of a ranking problem, classification and 
 ## Future plans:
 ------
  - Using featuretools and/or tsfresh libraries to automatically generate features
- - New feature for days since player’s last game (rust)
  - New feature for if a player is team’s attacker/defender with the most/second-most shots/key passes (maybe some teams let up more to secondary attacker)
  - New feature for out-of-position players (Ex: forward listed as defender)
  - Scraping betting odds (may be a little out of scope for this project)
@@ -83,12 +86,13 @@ The problem can be thought of as a mix of a ranking problem, classification and 
    - Predict the difference between points and last 6 average
    - Predict whether points will be greater than 7/8/10 (turn into classification problem)
    - Use Quantile Regression to estimate floor/ceiling
- - Make model doesn't try too hard to fit in 27-point matches, since we care more about discerning between 2 point and 10 point performances than between 15 point and 22 point performances (Currently trying to do this via winsorizing points)
+ - Make sure model doesn't try too hard to fit in 27-point matches, since we care more about discerning between 2 point and 10 point performances than between 15 point and 22 point performances (Currently trying to do this via winsorizing points)
    - Using a log transform or square root transform on points
    - Use class imbalancing techniques like SMOTE
    - Use sample weights
  - Write a script inside models directory that runs all the different approaches
  - Write an optimizer that automates lineup building given a set of projections
- - Have linting and unit tests setup
+   - When one score or one probability is output, simply maximize sum of scores or sum of probabilities
+   - For optimizing when there are probabilities for each individual score, use simulations to optimize lineups probability of getting > N points total
+ - Add unit tests
  - Have an interactive viz where users can look through player's projected points and shapley values.
-

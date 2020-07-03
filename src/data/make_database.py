@@ -203,7 +203,10 @@ def _insert_2017_season_data(conn, season):
             )
         )
         for player_entry in player_data["history"]:
-            if player_entry["round"] not in saved_rounds and player_entry["minutes"] > 0:
+            if (
+                player_entry["round"] not in saved_rounds
+                and player_entry["minutes"] > 0
+            ):
                 home = int(player_entry["was_home"])
                 player_dict = {
                     "mins": player_entry["minutes"],
@@ -223,7 +226,10 @@ def _insert_2017_season_data(conn, season):
                     "wf": player_entry["was_fouled"],
                     "pss": player_entry["attempted_passes"],
                     "aps": player_entry["completed_passes"],
-                    "pcp": player_entry["completed_passes"] / player_entry["completed_passes"] if player_entry["completed_passes"] > 0 else 0,
+                    "pcp": player_entry["completed_passes"]
+                    / player_entry["completed_passes"]
+                    if player_entry["completed_passes"] > 0
+                    else 0,
                     "crs": player_entry["crosses"],
                     "kp": player_entry["key_passes"],
                     "bc": player_entry["big_chances_created"],
@@ -233,7 +239,7 @@ def _insert_2017_season_data(conn, season):
                     "tck": player_entry["tackles"],
                     "br": player_entry["recoveries"],
                     "elg": player_entry["errors_leading_to_goal"],
-                    #"cost": (player_entry["value"] / 10),
+                    # "cost": (player_entry["value"] / 10),
                     "position_id": position_id,
                     "player_id": player_id,
                     "player_name": player_name,
@@ -249,7 +255,7 @@ def _insert_2017_season_data(conn, season):
                 rows_list.append(player_dict)
     if len(rows_list) > 0:
         df_player_stats = pd.DataFrame(rows_list)
-        df_player_stats['date'] = pd.to_datetime(df_player_stats['date'], utc=True)
+        df_player_stats["date"] = pd.to_datetime(df_player_stats["date"], utc=True)
         df_player_stats.to_sql("player_stats", conn, if_exists="append", index=False)
         conn.connection.commit()
 
@@ -364,7 +370,9 @@ def _insert_2018_season_data(conn, season):
                             "wf": player_entry["WF"],
                             "pss": player_entry["PSS"],
                             "aps": player_entry["APS"],
-                            "pcp": player_entry["PSS"] / player_entry["APS"] if player_entry["APS"] > 0 else 0,
+                            "pcp": player_entry["PSS"] / player_entry["APS"]
+                            if player_entry["APS"] > 0
+                            else 0,
                             "crs": player_entry["CRS"],
                             "kp": player_entry["KP"],
                             "bc": player_entry["BC"],
@@ -385,7 +393,9 @@ def _insert_2018_season_data(conn, season):
                             "season": season,
                             "date": date,
                         }
-                        player_dict = data_utilities.calculate_fantasy_scores(player_dict)
+                        player_dict = data_utilities.calculate_fantasy_scores(
+                            player_dict
+                        )
                         historical_rows_list.append(player_dict)
         elif round_id not in saved_rounds and not hit_current_round:
             hit_current_round = True
@@ -416,7 +426,7 @@ def _insert_2018_season_data(conn, season):
         df_historical = pd.DataFrame(historical_rows_list)
         # some home\away team and opponent info is messed up due to Fanhub only storing players current team so immidiately fix
         df_historical = df_historical.pipe(fix_player_home, player_team_dict)
-        df_historical['date'] = pd.to_datetime(df_historical['date'], utc=True)
+        df_historical["date"] = pd.to_datetime(df_historical["date"], utc=True)
         df_historical.to_sql("player_stats", conn, if_exists="append", index=False)
         conn.connection.commit()
     if len(opponent_rows_list) > 0:
@@ -424,7 +434,7 @@ def _insert_2018_season_data(conn, season):
         df_player = pd.DataFrame(player_rows_list)
         df_opponent = pd.DataFrame(opponent_rows_list)
         df_current = pd.merge(df_player, df_opponent, how="right", on=["team"])
-        df_current['date'] = pd.to_datetime(df_current['date'], utc=True)
+        df_current["date"] = pd.to_datetime(df_current["date"], utc=True)
         df_current.to_sql("player_stats", conn, if_exists="append", index=False)
         conn.connection.commit()
 

@@ -14,14 +14,19 @@ logging_utilities.setup_logging()
 logger = logging.getLogger(__name__)
 
 
-class NN_Regression_Model(ModelBase):
+class CNN_Ordinal_Model(ModelBase):
     def __init__(self, params, target, unused_cols, rerun_sql=True):
         super().__init__(params, target, unused_cols, rerun_sql)
+        self.epochs = params.pop("epochs")
+        self.batch_size = params.pop("batch_size")
+        self.learning_rate = params.pop("learning_rate")
+        self.conv_filters = params.pop("conv_filters")
+        self.conv_kernel_size = params.pop("conv_kernel_size")
+        self.pool_size = params.pop("pool_size")
         self.normal_layer_size = params.pop("normal_layer_size")
-        self.lstm_layer_size = params.pop("lstm_layer_size")
         self.upper = params.pop("upper")
         self.lower = params.pop("lower")
-        self.experiment_name = "nn_regression_model"
+        self.experiment_name = "cnn_model"
 
     def load_training_data(self):
         data = super().load_training_data()
@@ -100,9 +105,9 @@ class NN_Regression_Model(ModelBase):
     def prepare_x_input_dicts(self, df_dict):
         input_dicts = {}
         df_train = df_dict["train"]
-        ss_main = preprocessing.StandardScaler()
+        ss_main = preprocessing.MinMaxScaler()
         ss_main.fit(df_train[self.main_input_features])
-        ss_lag = preprocessing.StandardScaler()
+        ss_lag = preprocessing.MinMaxScaler()
         ss_lag.fit(
             df_train[df_train[self.lag_features].isin([-1]).any(axis=1)][
                 self.lag_features
@@ -115,7 +120,7 @@ class NN_Regression_Model(ModelBase):
                 data=ss_lag.transform(df[self.lag_features].replace({-1: np.nan})),
                 columns=self.lag_features,
             )
-            df_lag_scaled = df_lag_scaled.replace({np.nan: -100})
+            df_lag_scaled = df_lag_scaled.replace({np.nan: -1})
 
             x_input_dict = self.get_lagging_input_dict(df_lag_scaled)
             x_input_dict.update({"main_input": main_input})
@@ -193,40 +198,52 @@ class NN_Regression_Model(ModelBase):
             name="lag_opp_total_stats_input",
         )
 
-        # masking layers
-        lag_player_stats_masking = layers.Masking(mask_value=-100)(
-            lag_player_stats_input
+        # convolutional layers
+        conv_lag_player_stats = layers.Conv1D(
+            filters=self.conv_filters,
+            kernel_size=self.conv_kernel_size,
+            activation="relu",
+        )(lag_player_stats_input)
+        conv_lag_player_stats = layers.MaxPooling1D(pool_size=self.pool_size)(
+            conv_lag_player_stats
         )
-        lag_opp_stats_masking = layers.Masking(mask_value=-100)(lag_opp_stats_input)
-        lag_team_total_stats_masking = layers.Masking(mask_value=-100)(
-            lag_team_total_stats_input
+        conv_lag_player_stats = layers.Flatten()(conv_lag_player_stats)
+        conv_lag_opp_stats = layers.Conv1D(
+            filters=self.conv_filters,
+            kernel_size=self.conv_kernel_size,
+            activation="relu",
+        )(lag_opp_stats_input)
+        conv_lag_opp_stats = layers.MaxPooling1D(pool_size=self.pool_size)(
+            conv_lag_opp_stats
         )
-        lag_opp_total_stats_masking = layers.Masking(mask_value=-100)(
-            lag_opp_total_stats_input
+        conv_lag_opp_stats = layers.Flatten()(conv_lag_opp_stats)
+        conv_lag_team_total_stats = layers.Conv1D(
+            filters=self.conv_filters,
+            kernel_size=self.conv_kernel_size,
+            activation="relu",
+        )(lag_team_total_stats_input)
+        conv_lag_team_total_stats = layers.MaxPooling1D(pool_size=self.pool_size)(
+            conv_lag_team_total_stats
         )
-
-        # time series layers
-        lstm_lag_player_stats = layers.GRU(
-            self.lstm_layer_size, activation="relu", return_sequences=False
-        )(lag_player_stats_masking)
-        lstm_lag_opp_stats = layers.GRU(self.lstm_layer_size, activation="relu")(
-            lag_opp_stats_masking
+        conv_lag_team_total_stats = layers.Flatten()(conv_lag_team_total_stats)
+        conv_lag_opp_total_stats = layers.Conv1D(
+            filters=self.conv_filters,
+            kernel_size=self.conv_kernel_size,
+            activation="relu",
+        )(lag_opp_total_stats_input)
+        conv_lag_opp_total_stats = layers.MaxPooling1D(pool_size=self.pool_size)(
+            conv_lag_opp_total_stats
         )
-        lstm_lag_team_total_stats = layers.GRU(self.lstm_layer_size, activation="relu")(
-            lag_team_total_stats_masking
-        )
-        lstm_lag_opp_total_stats = layers.GRU(self.lstm_layer_size, activation="relu")(
-            lag_opp_total_stats_masking
-        )
+        conv_lag_opp_total_stats = layers.Flatten()(conv_lag_opp_total_stats)
 
         # main layers
         concat_all = layers.concatenate(
             [
                 main_input,
-                lstm_lag_player_stats,
-                lstm_lag_opp_stats,
-                lstm_lag_team_total_stats,
-                lstm_lag_opp_total_stats,
+                conv_lag_player_stats,
+                conv_lag_opp_stats,
+                conv_lag_team_total_stats,
+                conv_lag_opp_total_stats,
             ]
         )
         concat_all = layers.Dense(
@@ -253,7 +270,7 @@ class NN_Regression_Model(ModelBase):
         output_layers = [main_output]
         output_losses = {"main_output": "binary_crossentropy"}
         output_loss_weights = {"main_output": 1}
-        opt = optimizers.Adam(lr=0.01)
+        opt = optimizers.Adam(lr=self.learning_rate)
         model = models.Model(inputs=input_layers, outputs=output_layers)
         model.compile(
             optimizer=opt, loss=output_losses, loss_weights=output_loss_weights
@@ -280,8 +297,8 @@ class NN_Regression_Model(ModelBase):
             x=X_train,
             y=y_train,
             validation_data=(X_valid, y_valid),
-            epochs=15,
-            batch_size=128,
+            epochs=self.epochs,
+            batch_size=self.batch_size,
             callbacks=cb,
         )
         return model
@@ -341,7 +358,7 @@ if __name__ == "__main__":
         "points",
     ]
     target = "adjusted_points"
-    model = NN_Regression_Model(parameters, target, unused_cols, rerun_sql=rerun_sql)
+    model = CNN_Ordinal_Model(parameters, target, unused_cols, rerun_sql=rerun_sql)
     (df_train, df_valid, df_test, df_new) = model.load_training_data()
     run_id = model.evaluate_model(df_train, df_test, df_valid)
     model.generate_current_predictions(df_train, df_test, df_valid, df_new, run_id)

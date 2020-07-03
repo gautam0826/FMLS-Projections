@@ -1,8 +1,8 @@
 import logging
 
+import lightgbm as lgb
 import mlflow
 import mlflow.lightgbm
-import lightgbm as lgb
 import numpy as np
 import pandas as pd
 
@@ -19,7 +19,6 @@ class GBM_Ranking_Model(ModelBase):
         self.upper = params.pop("upper")
         self.lower = params.pop("lower")
         self.experiment_name = "gbm_ranking_model"
-
 
     @logging_utilities.instrument_function(logger)
     def save_training_data_to_file(self, conn, data_filepath):
@@ -88,13 +87,11 @@ class GBM_Ranking_Model(ModelBase):
         df.to_parquet(data_filepath, engine="fastparquet", compression=None)
         return df
 
-
     def prepare_x_input_dicts(self, df_dict):
         df_dict["train"] = df_dict.pop("train").sort_values(["position_id"])
         df_dict["valid"] = df_dict.pop("valid").sort_values(["position_id"])
         x_input_dict = {dataset: X[self.features] for dataset, X in df_dict.items()}
         return x_input_dict
-
 
     def build_model(self):
         model = lgb.LGBMRanker(**self.params)
@@ -103,8 +100,14 @@ class GBM_Ranking_Model(ModelBase):
     @logging_utilities.instrument_function(logger)
     def train_model(self, X_train, y_train, X_valid, y_valid):
         model = self.build_model()
-        group = [sum(X_train['position_id'] == position_id) for position_id in X_train['position_id'].unique()]
-        eval_group = [sum(X_valid['position_id'] == position_id) for position_id in X_valid['position_id'].unique()]
+        group = [
+            sum(X_train["position_id"] == position_id)
+            for position_id in X_train["position_id"].unique()
+        ]
+        eval_group = [
+            sum(X_valid["position_id"] == position_id)
+            for position_id in X_valid["position_id"].unique()
+        ]
 
         model.fit(
             X=X_train,
@@ -122,9 +125,9 @@ class GBM_Ranking_Model(ModelBase):
         return model
 
     def save_model(self, model, run_id):
-        #mlflow.lightgbm.save_model(
+        # mlflow.lightgbm.save_model(
         #    model, data_utilities.get_model_filepath(self.experiment_name, str(run_id))
-        #)
+        # )
         pass
 
     def predict(self, model, X):
