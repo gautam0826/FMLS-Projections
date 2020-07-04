@@ -181,8 +181,8 @@ def _insert_2017_season_data(conn, season):
         event_id = entry["id"]
         home_team = short_name_dict[entry["team_h"]]
         away_team = short_name_dict[entry["team_a"]]
-        home_dict[str(event_id) + ",1"] = home_team
-        home_dict[str(event_id) + ",0"] = away_team
+        home_dict[f"{event_id},1"] = home_team
+        home_dict[f"{event_id},0"] = away_team
 
     key_data = json.load(
         open(data_utilities.get_raw_data_filepath([season_subdir, "Key.json"]), "r")

@@ -14,19 +14,32 @@ logging_utilities.setup_logging()
 logger = logging.getLogger(__name__)
 
 
-class CNN_Ordinal_Model(ModelBase):
-    def __init__(self, params, target, unused_cols, rerun_sql=True):
-        super().__init__(params, target, unused_cols, rerun_sql)
-        self.epochs = params.pop("epochs")
-        self.batch_size = params.pop("batch_size")
-        self.learning_rate = params.pop("learning_rate")
-        self.conv_filters = params.pop("conv_filters")
-        self.conv_kernel_size = params.pop("conv_kernel_size")
-        self.pool_size = params.pop("pool_size")
-        self.normal_layer_size = params.pop("normal_layer_size")
-        self.upper = params.pop("upper")
-        self.lower = params.pop("lower")
-        self.experiment_name = "cnn_model"
+class RNNOrdinalModel(ModelBase):
+    def __init__(self):
+        super().__init__()
+        self.upper = self.params.pop("upper")
+        self.lower = self.params.pop("lower")
+        self.epochs = self.params.pop("epochs")
+        self.batch_size = self.params.pop("batch_size")
+        self.learning_rate = self.params.pop("learning_rate")
+        self.normal_layer_size = self.params.pop("normal_layer_size")
+        self.rnn_layer_size = self.params.pop("rnn_layer_size")
+        self.unused_cols = [
+            "event_id",
+            "player_id",
+            "player_name",
+            "unique_round",
+            "cost",
+            "dataset",
+            "season",
+            "round",
+            "position_id",
+            "team",
+            "opponent",
+            "advanced_position",
+            "points",
+        ]
+        self.target = "adjusted_points"
 
     def load_training_data(self):
         data = super().load_training_data()
@@ -105,9 +118,9 @@ class CNN_Ordinal_Model(ModelBase):
     def prepare_x_input_dicts(self, df_dict):
         input_dicts = {}
         df_train = df_dict["train"]
-        ss_main = preprocessing.MinMaxScaler()
+        ss_main = preprocessing.StandardScaler()
         ss_main.fit(df_train[self.main_input_features])
-        ss_lag = preprocessing.MinMaxScaler()
+        ss_lag = preprocessing.StandardScaler()
         ss_lag.fit(
             df_train[df_train[self.lag_features].isin([-1]).any(axis=1)][
                 self.lag_features
@@ -120,7 +133,7 @@ class CNN_Ordinal_Model(ModelBase):
                 data=ss_lag.transform(df[self.lag_features].replace({-1: np.nan})),
                 columns=self.lag_features,
             )
-            df_lag_scaled = df_lag_scaled.replace({np.nan: -1})
+            df_lag_scaled = df_lag_scaled.replace({np.nan: -100})
 
             x_input_dict = self.get_lagging_input_dict(df_lag_scaled)
             x_input_dict.update({"main_input": main_input})
@@ -198,52 +211,40 @@ class CNN_Ordinal_Model(ModelBase):
             name="lag_opp_total_stats_input",
         )
 
-        # convolutional layers
-        conv_lag_player_stats = layers.Conv1D(
-            filters=self.conv_filters,
-            kernel_size=self.conv_kernel_size,
-            activation="relu",
-        )(lag_player_stats_input)
-        conv_lag_player_stats = layers.MaxPooling1D(pool_size=self.pool_size)(
-            conv_lag_player_stats
+        # masking layers
+        lag_player_stats_masking = layers.Masking(mask_value=-100)(
+            lag_player_stats_input
         )
-        conv_lag_player_stats = layers.Flatten()(conv_lag_player_stats)
-        conv_lag_opp_stats = layers.Conv1D(
-            filters=self.conv_filters,
-            kernel_size=self.conv_kernel_size,
-            activation="relu",
-        )(lag_opp_stats_input)
-        conv_lag_opp_stats = layers.MaxPooling1D(pool_size=self.pool_size)(
-            conv_lag_opp_stats
+        lag_opp_stats_masking = layers.Masking(mask_value=-100)(lag_opp_stats_input)
+        lag_team_total_stats_masking = layers.Masking(mask_value=-100)(
+            lag_team_total_stats_input
         )
-        conv_lag_opp_stats = layers.Flatten()(conv_lag_opp_stats)
-        conv_lag_team_total_stats = layers.Conv1D(
-            filters=self.conv_filters,
-            kernel_size=self.conv_kernel_size,
-            activation="relu",
-        )(lag_team_total_stats_input)
-        conv_lag_team_total_stats = layers.MaxPooling1D(pool_size=self.pool_size)(
-            conv_lag_team_total_stats
+        lag_opp_total_stats_masking = layers.Masking(mask_value=-100)(
+            lag_opp_total_stats_input
         )
-        conv_lag_team_total_stats = layers.Flatten()(conv_lag_team_total_stats)
-        conv_lag_opp_total_stats = layers.Conv1D(
-            filters=self.conv_filters,
-            kernel_size=self.conv_kernel_size,
-            activation="relu",
-        )(lag_opp_total_stats_input)
-        conv_lag_opp_total_stats = layers.MaxPooling1D(pool_size=self.pool_size)(
-            conv_lag_opp_total_stats
+
+        # time series layers
+        rnn_lag_player_stats = layers.GRU(
+            self.rnn_layer_size, activation="relu", return_sequences=False
+        )(lag_player_stats_masking)
+        rnn_lag_opp_stats = layers.GRU(self.rnn_layer_size, activation="relu")(
+            lag_opp_stats_masking
         )
-        conv_lag_opp_total_stats = layers.Flatten()(conv_lag_opp_total_stats)
+        rnn_lag_team_total_stats = layers.GRU(self.rnn_layer_size, activation="relu")(
+            lag_team_total_stats_masking
+        )
+        rnn_lag_opp_total_stats = layers.GRU(self.rnn_layer_size, activation="relu")(
+            lag_opp_total_stats_masking
+        )
 
         # main layers
         concat_all = layers.concatenate(
             [
                 main_input,
-                conv_lag_player_stats,
-                conv_lag_opp_stats,
-                conv_lag_team_total_stats,
-                conv_lag_opp_total_stats,
+                rnn_lag_player_stats,
+                rnn_lag_opp_stats,
+                rnn_lag_team_total_stats,
+                rnn_lag_opp_total_stats,
             ]
         )
         concat_all = layers.Dense(
@@ -340,25 +341,7 @@ class CNN_Ordinal_Model(ModelBase):
 
 
 if __name__ == "__main__":
-    parameters = config_utilities.get_parameter_dict(__file__)
-    rerun_sql = parameters.pop("rerun_sql")
-    unused_cols = [
-        "event_id",
-        "player_id",
-        "player_name",
-        "unique_round",
-        "cost",
-        "dataset",
-        "season",
-        "round",
-        "position_id",
-        "team",
-        "opponent",
-        "advanced_position",
-        "points",
-    ]
-    target = "adjusted_points"
-    model = CNN_Ordinal_Model(parameters, target, unused_cols, rerun_sql=rerun_sql)
+    model = RNNOrdinalModel()
     (df_train, df_valid, df_test, df_new) = model.load_training_data()
     run_id = model.evaluate_model(df_train, df_test, df_valid)
     model.generate_current_predictions(df_train, df_test, df_valid, df_new, run_id)

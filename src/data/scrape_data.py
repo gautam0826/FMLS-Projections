@@ -95,28 +95,30 @@ def get_player_ids():
 
 @logging_utilities.instrument_function(logger)
 def download_all_data(
-    get_ids_method, download_data_method, id_type_str, max_connections
+    id_type, max_connections
 ):
-    ids = get_ids_method()
-    kwargs = {"total": len(ids), "unit": id_type_str, "unit_scale": True, "leave": True}
+    get_ids_methods = {'match':get_match_ids,'player':get_player_ids}
+    download_data_methods = {'match':download_match_data, 'player':download_player_data}
 
+    ids = get_ids_methods[id_type]()
+
+    kwargs = {"total": len(ids), "unit": id_type, "unit_scale": True, "leave": True}
     with ThreadPoolExecutor(max_workers=max_connections) as executor:
-        futures = (executor.submit(download_data_method, id) for id in ids)
+        futures = (executor.submit(download_data_methods[id_type], id) for id in ids)
         for future in tqdm(as_completed(futures), **kwargs):
             try:
                 status_code, id = future.result()
-                tqdm.write(f"finished {id_type_str} id={id} status code={status_code}")
+                tqdm.write(f"finished {id_type} id={id} status code={status_code}")
             except Exception as exc:
-                exception = str(type(exc))
-                tqdm.write(f"exception: {exception}")
+                tqdm.write(f"exception: {type(exc)}")
 
 
 def download_all_match_data(max_connections):
-    download_all_data(get_match_ids, download_match_data, "match", max_connections)
+    download_all_data("match", max_connections)
 
 
 def download_all_player_data(max_connections):
-    download_all_data(get_player_ids, download_player_data, "player", max_connections)
+    download_all_data("player", max_connections)
 
 
 if __name__ == "__main__":

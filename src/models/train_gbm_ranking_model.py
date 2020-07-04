@@ -13,12 +13,26 @@ logging_utilities.setup_logging()
 logger = logging.getLogger(__name__)
 
 
-class GBM_Ranking_Model(ModelBase):
-    def __init__(self, params, target, unused_cols, rerun_sql=True):
-        super().__init__(params, target, unused_cols, rerun_sql)
-        self.upper = params.pop("upper")
-        self.lower = params.pop("lower")
-        self.experiment_name = "gbm_ranking_model"
+class GBMRankingModel(ModelBase):
+    def __init__(self):
+        super().__init__()
+        self.upper = self.params.pop("upper")
+        self.lower = self.params.pop("lower")
+        self.unused_cols = [
+            "event_id",
+            "player_id",
+            "player_name",
+            "unique_round",
+            "cost",
+            "dataset",
+            "season",
+            "round",
+            "team",
+            "opponent",
+            "advanced_position",
+            "points",
+        ]
+        self.target = "adjusted_points"
 
     @logging_utilities.instrument_function(logger)
     def save_training_data_to_file(self, conn, data_filepath):
@@ -137,24 +151,7 @@ class GBM_Ranking_Model(ModelBase):
 
 
 if __name__ == "__main__":
-    parameters = config_utilities.get_parameter_dict(__file__)
-    rerun_sql = parameters.pop("rerun_sql")
-    unused_cols = [
-        "event_id",
-        "player_id",
-        "player_name",
-        "unique_round",
-        "cost",
-        "dataset",
-        "season",
-        "round",
-        "team",
-        "opponent",
-        "advanced_position",
-        "points",
-    ]
-    target = "adjusted_points"
-    model = GBM_Ranking_Model(parameters, target, unused_cols, rerun_sql=False)
+    model = GBMRankingModel()
     (df_train, df_valid, df_test, df_new) = model.load_training_data()
     run_id = model.evaluate_model(df_train, df_test, df_valid)
     model.generate_current_predictions(df_train, df_test, df_valid, df_new, run_id)

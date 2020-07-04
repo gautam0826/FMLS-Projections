@@ -90,7 +90,6 @@ The problem can be thought of as a mix of a ranking problem, classification and 
    - Using a log transform or square root transform on points
    - Use class imbalancing techniques like SMOTE
    - Use sample weights
- - Write a script inside models directory that runs all the different approaches
  - Write an optimizer that automates lineup building given a set of projections
    - When one score or one probability is output, simply maximize sum of scores or sum of probabilities
    - For optimizing when there are probabilities for each individual score, use simulations to optimize lineups probability of getting > N points total

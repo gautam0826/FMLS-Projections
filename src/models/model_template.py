@@ -1,20 +1,21 @@
 import os
 from abc import ABCMeta, abstractmethod
+import sys
 
 import mlflow
 import mlflow.sklearn
 import pandas as pd
 from tqdm import tqdm
 
-from src.utilities import data_utilities, logging_utilities
+from src.utilities import config_utilities, data_utilities, logging_utilities
 
 
 class ModelBase(metaclass=ABCMeta):
-    def __init__(self, params, target, unused_cols, rerun_sql):
-        self.params = params
-        self.target = target
-        self.unused_cols = unused_cols
-        self.rerun_sql = rerun_sql
+    def __init__(self):
+        file = os.path.splitext(os.path.basename(sys.modules[self.__module__].__file__))[0]
+        self.experiment_name = file.replace('train_', '')
+        self.params = config_utilities.get_parameter_dict(file)
+        self.rerun_sql = self.params.pop("rerun_sql")
         self.pred_column = "expected_value"
 
     def load_training_data(self):

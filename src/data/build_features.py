@@ -109,7 +109,7 @@ def create_player_lagging_stats_views(conn, max_lag_amount):
     ]
     cur = conn.connection.cursor()
     for view_name, partitions, lag_offsets, suffix in lagging:
-        cur.execute("DROP VIEW IF EXISTS " + view_name + ";")
+        cur.execute(f"DROP VIEW IF EXISTS {view_name};")
         conn.connection.commit()
 
         template_args_dict = {
@@ -147,7 +147,7 @@ def create_team_lagging_stats_views(conn, max_lag_amount):
     ]
     cur = conn.connection.cursor()
     for view_name, partitions, lag_offsets, suffix in lagging:
-        cur.execute("DROP VIEW IF EXISTS " + view_name + ";")
+        cur.execute(f"DROP VIEW IF EXISTS {view_name};")
         conn.connection.commit()
 
         template_args_dict = {

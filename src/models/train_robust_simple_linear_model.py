@@ -9,18 +9,35 @@ from sklearn import linear_model
 from tqdm import tqdm
 
 from src.models.model_template import ModelBase
-from src.utilities import data_utilities, logging_utilities
+from src.utilities import config_utilities, data_utilities, logging_utilities
 
 logging_utilities.setup_logging()
 logger = logging.getLogger(__name__)
 
 
-class Robust_Simple_Linear_Model(ModelBase):
-    def __init__(self, params, target, unused_cols, rerun_sql=True):
-        super().__init__(params, target, unused_cols, rerun_sql)
-        self.upper = params.pop("upper")
-        self.lower = params.pop("lower")
-        self.experiment_name = "robust_simple_linear_model"
+class RobustSimpleLinearModel(ModelBase):
+    def __init__(self):
+        super().__init__()
+        self.upper = self.params.pop("upper")
+        self.lower = self.params.pop("lower")
+        self.unused_cols = [
+            "event_id",
+            "player_id",
+            "player_name",
+            "unique_round",
+            "cost",
+            "dataset",
+            "season",
+            "round",
+            "position_id",
+            "team",
+            "advanced_position",
+            "opponent",
+            "advanced_position+opponent",
+            "home+opponent",
+            "home+team",
+        ]
+        self.target = "adjusted_points"
 
     @logging_utilities.instrument_function(logger)
     def save_training_data_to_file(self, conn, data_filepath):
@@ -107,16 +124,12 @@ class Robust_Simple_Linear_Model(ModelBase):
         return model
 
     def load_model(self, run_id):
-        model_path = os.path.join(
-            data_utilities.get_model_filepath(self.experiment_name, str(run_id))
-        )
+        model_path = data_utilities.get_model_filepath(self.experiment_name, str(run_id))
         model = mlflow.sklearn.load_model(model_path)
         return model
 
     def save_model(self, model, run_id):
-        model_path = os.path.join(
-            data_utilities.get_model_filepath(self.experiment_name, str(run_id))
-        )
+        model_path = data_utilities.get_model_filepath(self.experiment_name, str(run_id))
         mlflow.sklearn.save_model(
             model,
             model_path,
@@ -137,29 +150,7 @@ class Robust_Simple_Linear_Model(ModelBase):
 
 
 if __name__ == "__main__":
-    parameters = config_utilities.get_parameter_dict(__file__)
-    rerun_sql = parameters.pop("rerun_sql")
-    unused_cols = [
-        "event_id",
-        "player_id",
-        "player_name",
-        "unique_round",
-        "cost",
-        "dataset",
-        "season",
-        "round",
-        "position_id",
-        "team",
-        "advanced_position",
-        "opponent",
-        "advanced_position+opponent",
-        "home+opponent",
-        "home+team",
-    ]
-    target = "adjusted_points"
-    model = Robust_Simple_Linear_Model(
-        parameters, target, unused_cols, rerun_sql=rerun_sql
-    )
+    model = RobustSimpleLinearModel()
     (df_train, df_valid, df_test, df_new) = model.load_training_data()
     run_id = model.evaluate_model(df_train, df_test, df_valid)
     model.generate_current_predictions(df_train, df_test, df_valid, df_new, run_id)
