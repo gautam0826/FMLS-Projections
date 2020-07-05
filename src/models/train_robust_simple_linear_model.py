@@ -124,12 +124,16 @@ class RobustSimpleLinearModel(ModelBase):
         return model
 
     def load_model(self, run_id):
-        model_path = data_utilities.get_model_filepath(self.experiment_name, str(run_id))
+        model_path = data_utilities.get_model_filepath(
+            self.experiment_name, str(run_id)
+        )
         model = mlflow.sklearn.load_model(model_path)
         return model
 
     def save_model(self, model, run_id):
-        model_path = data_utilities.get_model_filepath(self.experiment_name, str(run_id))
+        model_path = data_utilities.get_model_filepath(
+            self.experiment_name, str(run_id)
+        )
         mlflow.sklearn.save_model(
             model,
             model_path,

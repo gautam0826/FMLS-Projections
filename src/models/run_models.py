@@ -20,6 +20,13 @@ def run_models(model_classes: List[ModelBase]):
         run_id = model.evaluate_model(df_train, df_test, df_valid)
         model.generate_current_predictions(df_train, df_test, df_valid, df_new, run_id)
 
+
 if __name__ == "__main__":
-    model_classes = [CNNOrdinalModel, GBMRankingModel, RNNOrdinalModel, RobustSimpleLinearModel, SimpleLinearModel]
+    model_classes = [
+        CNNOrdinalModel,
+        GBMRankingModel,
+        RNNOrdinalModel,
+        RobustSimpleLinearModel,
+        SimpleLinearModel,
+    ]
     run_models(model_classes)

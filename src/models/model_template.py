@@ -1,6 +1,6 @@
 import os
-from abc import ABCMeta, abstractmethod
 import sys
+from abc import ABCMeta, abstractmethod
 
 import mlflow
 import mlflow.sklearn
@@ -12,8 +12,10 @@ from src.utilities import config_utilities, data_utilities, logging_utilities
 
 class ModelBase(metaclass=ABCMeta):
     def __init__(self):
-        file = os.path.splitext(os.path.basename(sys.modules[self.__module__].__file__))[0]
-        self.experiment_name = file.replace('train_', '')
+        file = os.path.splitext(
+            os.path.basename(sys.modules[self.__module__].__file__)
+        )[0]
+        self.experiment_name = file.replace("train_", "")
         self.params = config_utilities.get_parameter_dict(file)
         self.rerun_sql = self.params.pop("rerun_sql")
         self.pred_column = "expected_value"

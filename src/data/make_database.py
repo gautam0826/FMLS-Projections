@@ -562,6 +562,7 @@ def create_team_stats_view(conn):
     execute_templated_sql_script(conn, TEAM_STATS_VIEW_TEMPLATE, template_args_dict)
 
 
+# TODO: switch using a view to an update trigger replacing ids
 @logging_utilities.instrument_function(logger)
 def create_name_matching_view(conn):
     # manually match together players by id whose names have changed

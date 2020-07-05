@@ -94,11 +94,12 @@ def get_player_ids():
 
 
 @logging_utilities.instrument_function(logger)
-def download_all_data(
-    id_type, max_connections
-):
-    get_ids_methods = {'match':get_match_ids,'player':get_player_ids}
-    download_data_methods = {'match':download_match_data, 'player':download_player_data}
+def download_all_data(id_type, max_connections):
+    get_ids_methods = {"match": get_match_ids, "player": get_player_ids}
+    download_data_methods = {
+        "match": download_match_data,
+        "player": download_player_data,
+    }
 
     ids = get_ids_methods[id_type]()
 
