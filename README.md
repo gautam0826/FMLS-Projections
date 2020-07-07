@@ -24,7 +24,7 @@ python -m src.models.train_rnn_ordinal_model --normal_layer_size=64
 ## Objectives:
 ------
  - Create a system to aid the decision-making of fantasy players by distinguishing MLS players who are likely to perform well in Fantasy MLS from those who will not.
- - Create a system where it is easy to try and robustly compare different machine learning approaches to achieve objective #1. Be able to compare state-of-the-art machine learning models with simple heuristics-based models, and classification approaches with regression approaches. People can comfortably plug-in and integrate their own ideas for data transformations and modeling.
+ - Create a system where it is easy to try and robustly compare different approaches to achieve objective #1. Be able to compare state-of-the-art machine learning models with simple heuristics-based models, and classification approaches with regression approaches. People can comfortably plug-in and integrate their own ideas for data transformations and modeling.
  - Make sure predictions are explainable and informative. Using techniques like [Shap values](https://github.com/slundberg/shap) can help tell fantasy players why the model predicted the values it predicted, which is more helpful than telling players to blindly trust the model's judgement. Also knowing a predictive distribution instead of just a number greatly helps assess potential risk.
  - Reduce the difficulty of people trying to run or work on this project. The project should be able to run completely locally on a laptop and the python scripts should all be individually executable without much setup.
 
