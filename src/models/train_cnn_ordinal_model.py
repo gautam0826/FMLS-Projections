@@ -176,7 +176,7 @@ class CNNOrdinalModel(ModelBase):
     def prepare_y_input_dicts(self, df_dict):
         input_dicts = {}
         for df_name, df in df_dict.items():
-            # y_input_dict = {str(quantile*100) + '_output':df[target] for quantile in quantiles}
+            # y_input_dict = {str(quantile*100) + '_output':df[self.target] for quantile in quantiles}
             y_input_dict = {"main_output": df.pipe(self.prepare_ordinal_data)}
             input_dicts[df_name] = y_input_dict
         return input_dicts
@@ -184,7 +184,7 @@ class CNNOrdinalModel(ModelBase):
     def prepare_ordinal_data(self, df):
         ordinal_df = pd.DataFrame()
         for i in range(self.lower, self.upper + 1):
-            ordinal_df[f">={i}"] = np.where(df[target] >= i, 1, 0)
+            ordinal_df[f">={i}"] = np.where(df[self.target] >= i, 1, 0)
         return ordinal_df
 
     def build_model(self, X_train):

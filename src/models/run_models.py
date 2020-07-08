@@ -1,10 +1,9 @@
 import logging
 from typing import List
 
-import matplotlib.pyplot as plt
-import numpy as np
+import mlflow
 import pandas as pd
-import seaborn as sns
+from mlflow.tracking import MlflowClient
 
 from src.models.model_template import ModelBase
 from src.models.train_cnn_ordinal_model import CNNOrdinalModel
@@ -18,24 +17,17 @@ logging_utilities.setup_logging()
 logger = logging.getLogger(__name__)
 
 
-def save_plot(fig, file_name, length_inches, height_inches):
-    fig.set_size_inches(length_inches, height_inches)
-    fig.savefig(
-        data_utilities.get_processed_data_filepath(f"{file_name}"),
-        bbox_inches="tight",
-        pad_inches=0,
-        edgecolor="none",
-        transparent=True,
-        dpi=400,
-    )
+def run_models(model_classes: List[ModelBase]):
+    for model_class in model_classes:
+        model = model_class()
+        (df_train, df_valid, df_test, df_new) = model.load_training_data()
+        run_id = model.evaluate_model(df_train, df_test, df_valid)
+        model.generate_current_predictions(df_train, df_test, df_valid, df_new, run_id)
 
 
-def plot_model_correlations(model_classes: List[ModelBase]):
-    plt.rcParams["font.family"] = "Franklin Gothic Book", "serif"
-
+def get_all_model_predictions(model_classes: List[ModelBase]):
     df_eval = pd.DataFrame()
     df_current = pd.DataFrame()
-    experiment_names = []
     for model_class in model_classes:
         model = model_class()
         df_eval_tmp = pd.read_csv(
@@ -83,33 +75,29 @@ def plot_model_correlations(model_classes: List[ModelBase]):
                     "cost",
                 ],
             )
-
-        experiment_names.append(model.experiment_name)
-
-    fig, axs = plt.subplots(2, 1)
-    titles = ["Testing data correlation matrix", "Current round correlation matrix"]
-    dfs = [df_eval, df_current]
-    for i, (title, df) in enumerate(zip(titles, dfs)):
-        axs[i].set_title(title, fontname="Franklin Gothic Medium")
-        g = sns.heatmap(
-            df[experiment_names].corr(),
-            annot=True,
-            cmap="coolwarm",
-            vmin=0,
-            vmax=1,
-            ax=axs[i],
-        )
-        g.set_xticklabels(g.get_xticklabels(), rotation=-15)
-        axs[i].figure.subplots_adjust(left=0.2)
-    save_plot(fig, "model_correlations.png", 8, 12)
+    return (df_eval, df_current)
 
 
-def run_models(model_classes: List[ModelBase]):
-    for model_class in model_classes:
-        model = model_class()
-        (df_train, df_valid, df_test, df_new) = model.load_training_data()
-        run_id = model.evaluate_model(df_train, df_test, df_valid)
-        model.generate_current_predictions(df_train, df_test, df_valid, df_new, run_id)
+def get_all_experiment_names(model_classes: List[ModelBase]):
+    return [model_class().experiment_name for model_class in model_classes]
+
+
+def get_all_model_run_info(experiment_names: List[str]):
+    df_runs = pd.DataFrame()
+    for experiment_name in experiment_names:
+        df_runs = df_runs.append(get_most_recent_run(experiment_name))
+    df_runs = df_runs.dropna(axis=1, how="all")
+    return df_runs
+
+
+def get_most_recent_run(experiment_name: str):
+    client = MlflowClient()
+    experiment_id = client.get_experiment_by_name(experiment_name).experiment_id
+
+    df_experiment_runs = mlflow.search_runs(experiment_ids=[experiment_id])
+    df_run = df_experiment_runs.sort_values("start_time", ascending=False).head(1)
+    df_run["experiment_name"] = experiment_name
+    return df_run
 
 
 if __name__ == "__main__":
@@ -120,4 +108,15 @@ if __name__ == "__main__":
         RobustSimpleLinearModel,
         SimpleLinearModel,
     ]
-    plot_model_correlations(model_classes)
+    # run_models(model_classes)
+    df_eval, df_current = get_all_model_predictions(model_classes)
+    df_eval.to_csv(
+        data_utilities.get_processed_data_filepath("eval_predictions.csv"), index=False
+    )
+    df_current.to_csv(
+        data_utilities.get_processed_data_filepath("current_predictions.csv"),
+        index=False,
+    )
+    experiment_names = get_all_experiment_names(model_classes)
+    df_runs = get_all_model_run_info(experiment_names)
+    df_runs.to_csv(data_utilities.get_processed_data_filepath("model_runs.csv"))

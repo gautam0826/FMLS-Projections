@@ -40,6 +40,10 @@ def get_model_filepath(experiment: str, id: str) -> str:
     return get_filepath(["models", experiment, id])
 
 
+def get_mlruns_filepath(files: List[str]) -> str:
+    return get_filepath(["mlruns"] + files)
+
+
 def get_conf_file_path(file: str) -> str:
     local_file_path = get_filepath(["conf", "local", file])
     if os.path.exists(local_file_path):

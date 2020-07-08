@@ -118,7 +118,7 @@ class ModelBase(metaclass=ABCMeta):
         )
         return metrics
 
-    def get_experiment_info(self, model, df_test):
+    def get_experiment_info(self, df_test):
         params = self.params
         # params.update({'features':self.features})
         metrics = self.calculate_metrics(df_test, 15, ".all")
@@ -140,7 +140,7 @@ class ModelBase(metaclass=ABCMeta):
         return (params, metrics, artifacts)
 
     def log_experiment(self, model, df_test):
-        params, metrics, artifacts = self.get_experiment_info(model, df_test)
+        params, metrics, artifacts = self.get_experiment_info(df_test)
         mlflow_uri = os.path.join(
             "file:/" + data_utilities.get_project_directory(), "mlruns"
         )
@@ -154,6 +154,7 @@ class ModelBase(metaclass=ABCMeta):
             # mlflow.log_artifacts(artifacts)
             # mlflow.set_tags(tags)
             # mlflow.sklearn.log_model(model, "model")
+            # self.save_model(model)
 
         return run_id
 
@@ -201,6 +202,7 @@ class ModelBase(metaclass=ABCMeta):
             ),
             index=False,
         )
+        # return df_predictions
         run_id = self.log_experiment(model, df_predictions)
         return run_id
 
@@ -241,4 +243,5 @@ class ModelBase(metaclass=ABCMeta):
             ),
             index=False,
         )
+        # return model
         self.save_model(model, run_id)
