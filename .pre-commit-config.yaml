@@ -1,0 +1,17 @@
+# See https://pre-commit.com/ for usage and config
+repos:
+- repo: local
+  hooks:
+  - id: isort
+    name: isort
+    stages: [commit]
+    language: system
+    entry: isort --recursive
+    types: [python]
+
+  - id: black
+    name: black
+    stages: [commit]
+    language: system
+    entry: black --skip-string-normalization
+    types: [python]
