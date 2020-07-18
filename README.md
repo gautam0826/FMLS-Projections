@@ -3,7 +3,7 @@
 
 ## Basic Usage:
 ------
-It is recommended to use conda and the provided `environment.yaml` file to install project dependencies. The python version of sqlite might have to be updated via [manually downloading the DLL and moving it into the Python DLL folder](https://dfir.blog/upgrading-pythons-sqlite/). The project follows the basic [Cookiecutter for Data Science template](https://github.com/drivendata/cookiecutter-data-science), with a few modifications taking inspiration from the [Kedro project structure](https://kedro.readthedocs.io/en/stable/02_getting_started/04_hello_world.html). The `scrape_data` script saves FMLS JSON data to the `data/raw` folder. The `make_database` script creates a SQLite database populated with FMLS statistics, updating the database if it already exists. The `build_features` script creates views for machine learning models. The five scripts, `train_simple_linear_model`, `train_robust_simple_linear_model`, `train_gbm_ranking_model`, `train_rnn_ordinal_model` and `train_cnn_ordinal_model` each train their associated machine learning models on the data and output predictions for the upcoming week, while `run_models` runs all of them. The `plot_models` script plots metrics and comparisons of different models.
+It is recommended to use conda and the provided `environment.yaml` file to install project dependencies. The sqlite might have to be updated via [manually downloading the DLL and moving it into the Python DLL folder](https://dfir.blog/upgrading-pythons-sqlite/) for window features to work. The project follows the basic [Cookiecutter for Data Science template](https://github.com/drivendata/cookiecutter-data-science), with a few modifications taking inspiration from the [Kedro project structure](https://kedro.readthedocs.io/en/stable/02_getting_started/04_hello_world.html). The `scrape_data` script saves FMLS JSON data to the `data/raw` folder. The `make_database` script creates a SQLite database populated with FMLS statistics, updating the database if it already exists. The `build_features` script creates views for machine learning models. The five scripts, `train_simple_linear_model`, `train_robust_simple_linear_model`, `train_gbm_ranking_model`, `train_rnn_ordinal_model` and `train_cnn_ordinal_model` each train their associated machine learning models on the data and output predictions for the upcoming week, while `run_models` runs all of them. The `plot_models` script plots metrics and comparisons of different models.
 
 Here are the commands to be run from the project's root directory
 ```
@@ -16,7 +16,7 @@ python -m src.models.train_gbm_ranking_model
 python -m src.models.train_rnn_ordinal_model
 python -m src.models.train_cnn_ordinal_model
 python -m src.models.run_models
-python -m vizualization.plot_models
+python -m src.vizualization.plot_models
 ```
 Program parameters default values are set in `conf/base/parameters.yaml` and can be overidden by creating a local parameters file in `conf/local/parameters.yaml` or by including command line arguments like shown
 ```
