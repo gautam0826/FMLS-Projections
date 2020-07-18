@@ -130,15 +130,8 @@ class RobustSimpleLinearModel(ModelBase):
         model = mlflow.sklearn.load_model(model_path)
         return model
 
-    def save_model(self, model, run_id):
-        model_path = data_utilities.get_model_filepath(
-            self.experiment_name, str(run_id)
-        )
-        mlflow.sklearn.save_model(
-            model,
-            model_path,
-            serialization_format=mlflow.sklearn.SERIALIZATION_FORMAT_CLOUDPICKLE,
-        )
+    def save_model(self, model):
+        mlflow.sklearn.log_model(model, "model")
         df_coef = pd.DataFrame({"coefficients": model.coef_, "names": self.features})
         df_coef.to_csv(
             data_utilities.get_processed_data_filepath(
@@ -155,6 +148,4 @@ class RobustSimpleLinearModel(ModelBase):
 
 if __name__ == "__main__":
     model = RobustSimpleLinearModel()
-    (df_train, df_valid, df_test, df_new) = model.load_training_data()
-    run_id = model.evaluate_model(df_train, df_test, df_valid)
-    model.generate_current_predictions(df_train, df_test, df_valid, df_new, run_id)
+    model.run()

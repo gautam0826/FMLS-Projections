@@ -138,11 +138,8 @@ class GBMRankingModel(ModelBase):
         )
         return model
 
-    def save_model(self, model, run_id):
-        # mlflow.lightgbm.save_model(
-        #    model, data_utilities.get_model_filepath(self.experiment_name, str(run_id))
-        # )
-        pass
+    def save_model(self, model):
+        mlflow.lightgbm.log_model(model.booster_, "model")
 
     def predict(self, model, X):
         y_pred = model.predict(X)
@@ -152,6 +149,4 @@ class GBMRankingModel(ModelBase):
 
 if __name__ == "__main__":
     model = GBMRankingModel()
-    (df_train, df_valid, df_test, df_new) = model.load_training_data()
-    run_id = model.evaluate_model(df_train, df_test, df_valid)
-    model.generate_current_predictions(df_train, df_test, df_valid, df_new, run_id)
+    model.run()

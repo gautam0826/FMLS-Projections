@@ -36,12 +36,14 @@ def get_raw_data_filepath(files: List[str]) -> str:
     return get_filepath(["data", "raw"] + files)
 
 
-def get_model_filepath(experiment: str, id: str) -> str:
-    return get_filepath(["models", experiment, id])
-
-
 def get_mlruns_filepath(files: List[str]) -> str:
     return get_filepath(["mlruns"] + files)
+
+
+def get_model_filepath(experiment_name: str, run_id: str) -> str:
+    client = MlflowClient()
+    experiment_id = client.get_experiment_by_name(experiment_name).experiment_id
+    return get_mlruns_filepath([experiment_id, run_id, "artifacts", "model"])
 
 
 def get_conf_file_path(file: str) -> str:

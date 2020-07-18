@@ -20,9 +20,7 @@ logger = logging.getLogger(__name__)
 def run_models(model_classes: List[ModelBase]):
     for model_class in model_classes:
         model = model_class()
-        (df_train, df_valid, df_test, df_new) = model.load_training_data()
-        run_id = model.evaluate_model(df_train, df_test, df_valid)
-        model.generate_current_predictions(df_train, df_test, df_valid, df_new, run_id)
+        model.run()
 
 
 def get_all_model_predictions(model_classes: List[ModelBase]):
@@ -108,7 +106,7 @@ if __name__ == "__main__":
         RobustSimpleLinearModel,
         SimpleLinearModel,
     ]
-    # run_models(model_classes)
+    run_models(model_classes)
     df_eval, df_current = get_all_model_predictions(model_classes)
     df_eval.to_csv(
         data_utilities.get_processed_data_filepath("eval_predictions.csv"), index=False

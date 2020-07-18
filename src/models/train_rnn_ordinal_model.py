@@ -310,10 +310,8 @@ class RNNOrdinalModel(ModelBase):
         )
         return model
 
-    def save_model(self, model, run_id):
-        mlflow.keras.save_model(
-            model, data_utilities.get_model_filepath(self.experiment_name, str(run_id))
-        )
+    def save_model(self, model):
+        mlflow.keras.log_model(model, "model")
 
     def predict(self, model, X):
         # quick fix to ensure rank monotonicity: sort output probabilities
@@ -342,6 +340,4 @@ class RNNOrdinalModel(ModelBase):
 
 if __name__ == "__main__":
     model = RNNOrdinalModel()
-    (df_train, df_valid, df_test, df_new) = model.load_training_data()
-    run_id = model.evaluate_model(df_train, df_test, df_valid)
-    model.generate_current_predictions(df_train, df_test, df_valid, df_new, run_id)
+    model.run()

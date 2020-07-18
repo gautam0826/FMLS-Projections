@@ -56,18 +56,6 @@ class ModelBase(metaclass=ABCMeta):
         cat_vars = list(set(df.columns) - set(df._get_numeric_data().columns))
         return cat_vars
 
-    def get_most_recent_run(self):
-        experiment_model_dir = os.path.join(
-            data_utilities.path_to_models, self.experiment_name
-        )
-        model_dirs = [
-            os.path.join(experiment_model_dir, d)
-            for d in os.listdir(experiment_model_dir)
-            if os.path.isdir(os.path.join(experiment_model_dir, d))
-        ]
-        latest_model_path = max(model_dirs, key=os.path.getmtime)
-        return latest_model_path
-
     @abstractmethod
     def build_model(self):
         raise NotImplementedError
@@ -81,7 +69,7 @@ class ModelBase(metaclass=ABCMeta):
         raise NotImplementedError
 
     @abstractmethod
-    def save_model(self, model, run_id):
+    def save_model(self, model):
         raise NotImplementedError
 
     @abstractmethod
@@ -130,7 +118,15 @@ class ModelBase(metaclass=ABCMeta):
                     df_position, count_players, f".position.{position_id}"
                 )
             )
-        artifacts = {}
+        # add csv to artifacts
+        artifacts = [
+            data_utilities.get_processed_data_filepath(
+                f"{self.experiment_name}_eval_predictions.csv"
+            ),
+            data_utilities.get_processed_data_filepath(
+                f"{self.experiment_name}_current_predictions.csv"
+            ),
+        ]
         # tags = {
         #    "metaflow_runid" : current.run_id,
         #    "username" : current.username,
@@ -151,12 +147,18 @@ class ModelBase(metaclass=ABCMeta):
             run_id = run.info.run_id
             mlflow.log_params(params)
             mlflow.log_metrics(metrics)
-            # mlflow.log_artifacts(artifacts)
+            for artifact in artifacts:
+                mlflow.log_artifact(artifact)
             # mlflow.set_tags(tags)
-            # mlflow.sklearn.log_model(model, "model")
-            # self.save_model(model)
+            self.save_model(model)
 
         return run_id
+
+    def run(self):
+        (df_train, df_valid, df_test, df_new) = self.load_training_data()
+        df_test_predictions = self.evaluate_model(df_train, df_test, df_valid)
+        model = self.generate_current_predictions(df_train, df_test, df_valid, df_new)
+        self.log_experiment(model, df_test_predictions)
 
     def evaluate_model(self, df_train, df_test, df_valid):
         df_predictions = pd.DataFrame()
@@ -202,11 +204,9 @@ class ModelBase(metaclass=ABCMeta):
             ),
             index=False,
         )
-        # return df_predictions
-        run_id = self.log_experiment(model, df_predictions)
-        return run_id
+        return df_predictions
 
-    def generate_current_predictions(self, df_train, df_test, df_valid, df_new, run_id):
+    def generate_current_predictions(self, df_train, df_test, df_valid, df_new):
         df_train = pd.concat([df_train, df_test], axis=0)
         df_dict = {"train": df_train, "valid": df_valid, "new": df_new}
         input_x_dicts = self.prepare_x_input_dicts(df_dict)
@@ -243,5 +243,4 @@ class ModelBase(metaclass=ABCMeta):
             ),
             index=False,
         )
-        # return model
-        self.save_model(model, run_id)
+        return model
